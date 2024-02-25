@@ -1,8 +1,33 @@
-* {
-    font-family: "Inter", sans-serif;
+/* https://colorhunt.co/palette/3630624d4c7df99417f5f5f5 */
+
+:root {
+    --c1: #363062;
+    --c2: #4D4C7D;
+    --c3: #F99417;
+    --c4: #F5F5F5;
+    --sans-serif-font: "Ubuntu", sans-serif;
+    --monospace-font: "Ubuntu Mono", monospace;
+
+    font-family: var(--sans-serif-font);
     font-optical-sizing: auto;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--c1);
+    overflow: hidden;
+    margin: auto;
+    border: none;
+    left: 0;
+    top: 0;
+}
+
+:root .mono {
+    font-family: var(--monospace-font);
 }
 
 h1 {
-    color: red;
+    color: var(--c3);
 }
