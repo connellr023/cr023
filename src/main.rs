@@ -1,12 +1,21 @@
 use yew::prelude::*;
+use stylist::style;
+use stylist::yew::styled_component;
 
-#[function_component(App)]
+#[styled_component(App)]
 fn app() -> Html {
+    let stylesheet = style!(
+        r#"
+            color: red;
+        "#
+    )
+    .unwrap();
+
     html! {
-        <h1>{"Test Page!"}</h1>
+        <h1 class={stylesheet}>{"Test Page!"}</h1>
     }
 }
 
 fn main() {
-    yew::Renderer::<App>::new().render();
+    yew::start_app::<App>();
 }
