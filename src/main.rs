@@ -3,7 +3,7 @@ mod components;
 use yew::prelude::*;
 use stylist::Style;
 use stylist::yew::styled_component;
-use components::top_bar::TopBar;
+use components::name_section::NameSection;
 
 const MAIN_STYLESHEET: &str = include_str!("styles/main.css");
 
@@ -16,8 +16,10 @@ fn app() -> Html
     {
         <main class={main_stylesheet}>
             <div class={"app-wrapper"}>
-                <TopBar />
-                <h1>{"Test Page!"}</h1>
+                <NameSection
+                    full_name={"Connell Reffo"}
+                    title_name={"connellr023"}
+                />
             </div>
         </main>
     }

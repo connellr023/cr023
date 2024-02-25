@@ -266,6 +266,8 @@ name = "portfolio"
 version = "0.1.0"
 dependencies = [
  "stylist",
+ "wasm-bindgen",
+ "web-sys",
  "yew",
 ]
 

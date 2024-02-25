@@ -1,0 +1,15 @@
+:root {
+    text-align: left;
+    width: 100%;
+    padding: 10px 10px 15px 15px;
+    border-left: 3px solid var(--c4);
+}
+
+h1.full-name {
+    margin-bottom: 5px;
+}
+
+div.title-name {
+    color: var(--c4);
+    font-size: 26px;
+}
