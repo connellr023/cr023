@@ -1,6 +1,7 @@
 use yew::prelude::*;
 use stylist::Style;
 use stylist::yew::styled_component;
+use crate::components::typer::Typer;
 
 const STYLESHEET: &str = include_str!("../styles/name_section.css");
 
@@ -20,7 +21,7 @@ pub fn name_section(NameSectionProps { full_name, title_name }: &NameSectionProp
     {
         <div class={stylesheet}>
             <h1 class={"full-name"}>{full_name}</h1>
-            <div class={"title-name mono"}>{title_name}</div>
+            <Typer class={"title-name mono"} word={String::from(title_name)} interval={150} />
         </div>
     }
 }

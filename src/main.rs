@@ -1,4 +1,5 @@
 mod components;
+mod bindings;
 
 use yew::prelude::*;
 use stylist::Style;
