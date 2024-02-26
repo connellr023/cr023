@@ -4,7 +4,7 @@ mod bindings;
 use yew::prelude::*;
 use stylist::Style;
 use stylist::yew::styled_component;
-use components::name_section::NameSection;
+use components::{name_section::NameSection, gh_img_btn::GithubImageButton};
 
 const MAIN_STYLESHEET: &str = include_str!("styles/main.css");
 
@@ -21,6 +21,7 @@ fn app() -> Html
                     full_name={"Connell Reffo"}
                     title_name={"connellr023"}
                 />
+                <GithubImageButton />
             </div>
         </main>
     }

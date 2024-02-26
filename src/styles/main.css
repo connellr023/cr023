@@ -2,7 +2,7 @@
     --c1: black;
     --c2: #52057B;
     --c3: #892CDC;
-    --c4: #BC6FF1;
+    --c4: #e7e7e7;
     --sans-serif-font: "Ubuntu", sans-serif;
     --monospace-font: "Ubuntu Mono", monospace;
 
@@ -21,11 +21,11 @@
     border: none;
     left: 0;
     top: 0;
+    animation: 0.3s ease-in-out fade-in;
 }
 
 * {
     margin: auto;
-    animation: 1s ease-in-out fade-in;
 }
 
 .mono {

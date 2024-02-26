@@ -1,15 +1,28 @@
 :root {
+    font-size: 1vw;
     text-align: left;
     width: 100%;
     padding: 10px 10px 15px 15px;
-    border-left: 3px solid var(--c4);
+}
+
+h1 {
+    user-select: none;
 }
 
 h1.full-name {
+    --c: #858585;
+
+    border-left: 3px solid var(--c);
+    font-size: clamp(17px, 1.5em, 40px);
+    padding-left: 10px;
     margin-bottom: 5px;
+    animation: 1s ease-in-out fade-in;
+    color: var(--c);
 }
 
-div.title-name {
+h1.title-name {
     color: var(--c4);
-    font-size: 26px;
+    font-size: clamp(34px, 3em, 60px);
+    margin-bottom: 15px;
+    animation: 2s ease-in-out fade-in;
 }
