@@ -17,11 +17,12 @@ fn app() -> Html
     {
         <main class={main_stylesheet}>
             <div class={"app-wrapper"}>
+                <GithubImageButton />
                 <NameSection
                     title={"connellr023"}
                     message={"I need a degree."}
                 />
-                <GithubImageButton />
+                <div class="spacer"></div>
             </div>
         </main>
     }

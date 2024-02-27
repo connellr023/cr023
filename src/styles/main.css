@@ -16,13 +16,14 @@
     width: 100vw;
     height: 100vh;
     background-color: var(--c1);
-    overflow: hidden;
+    overflow-x: auto;
     margin: auto;
     border: none;
     left: 0;
     top: 0;
     animation: 0.3s ease-in-out fade-in;
     filter: invert(1);
+    scrollbar-width: thin;
 }
 
 * {
@@ -35,6 +36,10 @@
 
 div.app-wrapper {
     width: 70%;
+}
+
+div.spacer {
+    height: 500px;
 }
 
 @keyframes fade-in {

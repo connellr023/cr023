@@ -10,7 +10,7 @@ pub fn gh_img_btn() -> Html
 
     html!
     {
-        <a class={stylesheet} title={"Project Repository"} href="https://github.com/connellr023/portfolio" target="_blank">
+        <a class={stylesheet} title={"Project Repository"} href="https://github.com/connellr023/cr023" target="_blank">
             <img alt="GitHub logo" src="assets/github_logo.png" />
         </a>
     }
