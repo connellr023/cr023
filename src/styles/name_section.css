@@ -9,7 +9,14 @@ h1 {
     user-select: none;
 }
 
-h1.full-name {
+.title {
+    color: var(--c4);
+    font-size: clamp(34px, 3em, 60px);
+    margin-bottom: 15px;
+    animation: 2s ease-in-out fade-in;
+}
+
+.message {
     --c: #858585;
 
     border-left: 3px solid var(--c);
@@ -18,11 +25,4 @@ h1.full-name {
     margin-bottom: 5px;
     animation: 1s ease-in-out fade-in;
     color: var(--c);
-}
-
-h1.title-name {
-    color: var(--c4);
-    font-size: clamp(34px, 3em, 60px);
-    margin-bottom: 15px;
-    animation: 2s ease-in-out fade-in;
 }

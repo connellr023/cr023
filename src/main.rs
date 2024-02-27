@@ -18,8 +18,8 @@ fn app() -> Html
         <main class={main_stylesheet}>
             <div class={"app-wrapper"}>
                 <NameSection
-                    full_name={"Connell Reffo"}
-                    title_name={"connellr023"}
+                    title={"connellr023"}
+                    message={"I need a degree."}
                 />
                 <GithubImageButton />
             </div>

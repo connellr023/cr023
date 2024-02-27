@@ -15,13 +15,20 @@ pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
 {
     let end = use_state(|| 1);
     let end_clone = end.clone();
+    let word_clone = word.clone();
     let interval_clone: u32 = interval.clone();
     let len = word.len();
 
     use_effect_with_deps(move |_| {
         if *end_clone < len {
             let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
-                end_clone.set(*end_clone + 1);
+                end_clone.set(
+                    *end_clone +
+                        if word_clone.chars().nth(*end_clone).unwrap() == ' '
+                        { 2 }
+                        else
+                        { 1 }
+                );
             }));
 
             set_timeout(&timeout_closure, interval_clone);
@@ -34,6 +41,6 @@ pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
 
     html!
     {
-        <div class={class}>{&word[0..*end]}</div>
+        <span class={class}>{&word[0..*end]}</span>
     }
 }
