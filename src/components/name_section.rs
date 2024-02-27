@@ -16,11 +16,10 @@ pub struct NameSectionProps
 pub fn name_section(NameSectionProps { title, message }: &NameSectionProps) -> Html
 {
     let stylesheet: Style = Style::new(STYLESHEET).unwrap();
-
     html!
     {
         <div class={stylesheet}>
-            <h1 class={"title mono"}>{format!("<{}>", title)}</h1>
+            <h1 class={"title mono"}>{"{"}<a href="https://github.com/connellr023" target="_blank">{title}</a>{"}"}</h1>
             <i class={"message"}><Typer word={message.clone()} interval={110} /></i>
         </div>
     }
