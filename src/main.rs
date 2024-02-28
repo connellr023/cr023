@@ -4,8 +4,8 @@ mod bindings;
 use yew::prelude::*;
 use stylist::{yew::styled_component, Style};
 use wasm_bindgen::{prelude::Closure, JsCast};
-use components::{name_section::NameSection, gh_img_btn::GithubImageButton};
 use web_sys::{window};
+use crate::components::{name_section::NameSection, gh_img_btn::GithubImageButton};
 use crate::bindings::{log};
 
 const MAIN_STYLESHEET: &str = include_str!("styles/main.css");
@@ -34,7 +34,7 @@ fn app() -> Html
 
     html!
     {
-        <main id={"app-main"} class={main_stylesheet}>
+        <main class={main_stylesheet}>
             <div class={"app-wrapper"}>
                 <GithubImageButton />
                 <NameSection
