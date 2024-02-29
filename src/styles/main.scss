@@ -1,0 +1,60 @@
+@import "gh_img_btn";
+@import "name_section";
+
+body {
+    background: red;
+}
+
+//#app-wrapper {
+//    --c1: #030303;
+//    --c2: #52057B;
+//    --c3: #892CDC;
+//    --c4: #e7e7e7;
+//    --sans-serif-font: "Ubuntu", sans-serif;
+//    --monospace-font: "Ubuntu Mono", monospace;
+//
+//    font-family: var(--sans-serif-font);
+//    font-optical-sizing: auto;
+//    color: var(--c4);
+//    position: absolute;
+//    overflow-y: visible;
+//    left: 0;
+//    top: 0;
+//    animation: 0.3s ease-in-out fade-in;
+//    scrollbar-width: thin;
+//    width: 100vw;
+//    height: max-content;
+//    background-color: var(--c1);
+//    filter: invert(0);
+//    transition: filter 0.2s ease-in-out;
+//}
+//
+//#app-wrapper.in-view {
+//    filter: invert(1);
+//}
+//
+//div#app-wrapper {
+//    width: 70%;
+//}
+//
+//* {
+//    margin: auto;
+//}
+//
+//.mono {
+//    font-family: var(--monospace-font);
+//}
+//
+//div.spacer {
+//    height: 500px;
+//}
+//
+//@keyframes fade-in {
+//    0% {
+//        opacity: 0;
+//    }
+//
+//    100% {
+//        opacity: 1;
+//    }
+//}

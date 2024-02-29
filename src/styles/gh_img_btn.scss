@@ -1,0 +1,21 @@
+a.gh-a {
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    filter: invert(1);
+    background: red;
+
+    img {
+        width: 5vw;
+        min-width: 35px;
+        max-width: 45px;
+        opacity: 0.9;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    img:hover {
+        opacity: 0.5;
+    }
+}

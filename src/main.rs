@@ -2,18 +2,13 @@ mod components;
 mod bindings;
 
 use yew::prelude::*;
-use stylist::{yew::styled_component, Style};
 use web_sys::{window, Window, Element};
 use wasm_bindgen::{closure::Closure, JsCast, UnwrapThrowExt};
 use crate::components::{name_section::NameSection, gh_img_btn::GithubImageButton};
-//use crate::bindings::log;
 
-const MAIN_STYLESHEET: &str = include_str!("styles/main.css");
-
-#[styled_component(App)]
+#[function_component(App)]
 fn app() -> Html
 {
-    let main_stylesheet: Style = Style::new(MAIN_STYLESHEET).unwrap();
     let window: Window = window().unwrap();
     let in_view = use_state(|| true);
     let in_view_clone = in_view.clone();
@@ -49,16 +44,14 @@ fn app() -> Html
 
     html!
     {
-        <main class={main_stylesheet}>
-            <div class={if *in_view { "in-view" } else { "" }}>
-                <div id="app-wrapper">
-                    <GithubImageButton />
-                    <NameSection
-                        title={"connellr023"}
-                        message={"I need a degree."}
-                    />
-                    <div class="spacer"></div>
-                </div>
+        <main class={if *in_view { "in-view" } else { "" }}>
+            <div id="app-wrapper">
+                <GithubImageButton />
+                <NameSection
+                    title={"connellr023"}
+                    message={"I need a degree."}
+                />
+                <div class="spacer"></div>
             </div>
         </main>
     }
