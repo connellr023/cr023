@@ -10,20 +10,30 @@
     font-optical-sizing: auto;
     color: var(--c4);
     position: absolute;
+    overflow-y: visible;
+    left: 0;
+    top: 0;
+    animation: 0.3s ease-in-out fade-in;
+    scrollbar-width: thin;
+}
+
+:root > div {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: max-content;
     background-color: var(--c1);
-    overflow-y: visible;
-    margin: auto;
-    border: none;
-    left: 0;
-    top: 0;
-    animation: 0.3s ease-in-out fade-in;
+    filter: invert(0);
+    transition: filter 0.2s ease-in-out;
+}
+
+:root > div.in-view {
     filter: invert(1);
-    scrollbar-width: thin;
+}
+
+div#app-wrapper {
+    width: 70%;
 }
 
 * {
@@ -32,10 +42,6 @@
 
 .mono {
     font-family: var(--monospace-font);
-}
-
-div.app-wrapper {
-    width: 70%;
 }
 
 div.spacer {
