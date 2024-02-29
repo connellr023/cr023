@@ -44,15 +44,13 @@ fn app() -> Html
 
     html!
     {
-        <main class={if *in_view { "in-view" } else { "" }}>
-            <div id="app-wrapper">
-                <GithubImageButton />
-                <NameSection
-                    title={"connellr023"}
-                    message={"I need a degree."}
-                />
-                <div class="spacer"></div>
-            </div>
+        <main id="app-wrapper" class={if *in_view { "in-view" } else { "" }}>
+            <GithubImageButton />
+            <NameSection
+                title={"connellr023"}
+                message={"I need a degree."}
+            />
+            <div class="spacer"></div>
         </main>
     }
 }
