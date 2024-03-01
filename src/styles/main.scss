@@ -10,20 +10,25 @@
     --monospace-font: "Ubuntu Mono", monospace;
 }
 
+main#app-wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: var(--c1);
+    transition: background-color 0.25s ease-in-out;
+    width: 100%;
+
+    &.in-view {
+        --c1: invert(var(--c1));
+    }
+}
+
 body {
     font-family: var(--sans-serif-font);
     font-optical-sizing: auto;
     color: var(--c4);
     animation: 0.3s ease-in-out fade-in;
     scrollbar-width: thin;
-    transition: filter 0.2s ease-in-out;
     margin: auto;
-}
-
-main#app-wrapper {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background-color: var(--c1);
 }
 
 div.spacer {
