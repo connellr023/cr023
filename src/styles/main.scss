@@ -1,5 +1,6 @@
 @import "gh_img_btn";
 @import "name_section";
+@import "scroll_prompt";
 
 :root {
     --c1: #030303;
@@ -40,33 +41,3 @@ div.spacer {
 .mono {
     font-family: var(--monospace-font);
 }
-
-//#app-wrapper {
-
-//}
-//
-//#app-wrapper.in-view {
-//    filter: invert(1);
-//}
-//
-//div#app-wrapper {
-//    width: 70%;
-//}
-//
-//* {
-//    margin: auto;
-//}
-//
-
-//
-
-//
-//@keyframes fade-in {
-//    0% {
-//        opacity: 0;
-//    }
-//
-//    100% {
-//        opacity: 1;
-//    }
-//}

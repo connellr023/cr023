@@ -4,7 +4,7 @@ mod bindings;
 use yew::prelude::*;
 use web_sys::{window, Window, Element};
 use wasm_bindgen::{closure::Closure, JsCast, UnwrapThrowExt};
-use crate::components::{name_section::NameSection, gh_img_btn::GithubImageButton};
+use crate::components::{name_section::NameSection, gh_img_btn::GithubImageButton, scroll_prompt::ScrollPrompt};
 
 #[function_component(App)]
 fn app() -> Html
@@ -46,6 +46,7 @@ fn app() -> Html
     {
         <main id="app-wrapper" class={if *in_view { "in-view" } else { "" }}>
             <GithubImageButton />
+            <ScrollPrompt />
             <NameSection name={"connellr023"} />
             <div class="spacer"></div>
         </main>
