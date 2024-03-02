@@ -13,11 +13,11 @@ pub struct TyperProps
 #[function_component(Typer)]
 pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
 {
-    let end = use_state(|| 1);
+    let end = use_state(|| 0);
     let end_clone = end.clone();
-    let word_ptr = *word;
+    let word_ptr: &str = *word;
     let interval_clone: u32 = interval.clone();
-    let len = word.len();
+    let len: usize = word.len();
 
     use_effect_with_deps(move |_| {
         if *end_clone < len {

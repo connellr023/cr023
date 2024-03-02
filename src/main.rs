@@ -4,7 +4,12 @@ mod bindings;
 use yew::prelude::*;
 use web_sys::{window, Window, Element};
 use wasm_bindgen::{closure::Closure, JsCast, UnwrapThrowExt};
-use crate::components::{name_section::NameSection, gh_img_btn::GithubImageButton, scroll_prompt::ScrollPrompt};
+use crate::components::{
+    name_section::NameSection,
+    gh_img_btn::GithubImageButton,
+    scroll_prompt::ScrollPrompt,
+    snippet::Snippet
+};
 
 #[function_component(App)]
 fn app() -> Html
@@ -44,11 +49,15 @@ fn app() -> Html
 
     html!
     {
-        <main id="app-wrapper" class={if *in_view { "in-view" } else { "" }}>
+        <main id={"app-wrapper"} class={format!("flex-wrapper {}", if *in_view { "in-view" } else { "" })}>
+            <div class={"bg"} />
             <GithubImageButton />
             <ScrollPrompt />
             <NameSection name={"connellr023"} />
-            <div class="spacer"></div>
+            <div id={"snippets-wrapper"} class={"mono"}>
+                <Snippet property={"cr023.skills"} value={r#"{ ["test"] }"#} />
+            </div>
+            <div class={"spacer"} />
         </main>
     }
 }

@@ -5,7 +5,8 @@
   height: min-content;
   text-align: left;
   left: 18px;
-  top: 3px;
+  top: 0;
+  z-index: 5;
 
   .title {
     color: var(--c4);
@@ -27,6 +28,7 @@
 }
 
 .in-view #name-section-wrapper {
+  background: none;
   font-size: clamp(23px, 3vw, 36px);
   filter: invert(0);
   position: initial;

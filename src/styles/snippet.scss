@@ -1,0 +1,16 @@
+#snippets-wrapper {
+  position: absolute;
+  bottom: 10lvh;
+  width: 75%;
+}
+
+.snippet-wrapper {
+  opacity: 1;
+  transition: opacity 0.13s ease-in-out;
+  padding-bottom: 50px;
+  color: red;
+}
+
+.in-view .snippet-wrapper {
+  opacity: 0;
+}

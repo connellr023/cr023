@@ -1,6 +1,7 @@
 @import "gh_img_btn";
 @import "name_section";
 @import "scroll_prompt";
+@import "snippet";
 
 :root {
     --c1: #030303;
@@ -12,17 +13,21 @@
 }
 
 main#app-wrapper {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
-    background-color: var(--c1);
-    transition: background-color 0.25s ease-in-out;
-    width: 100%;
-    display: flex;
-    justify-content: center;
 
     &.in-view {
         --c1: invert(var(--c1));
     }
+}
+
+.bg {
+    transition: background-color 0.25s ease-in-out;
+    position: fixed;
+    background-color: var(--c1);
+    width: 100lvw;
+    height: 100lvh;
+    z-index: -1;
 }
 
 body {
@@ -34,10 +39,17 @@ body {
     margin: auto;
 }
 
-div.spacer {
-    height: 2000px;
-}
-
 .mono {
     font-family: var(--monospace-font);
+}
+
+.flex-wrapper {
+    width: 100lvw;
+    display: flex;
+    justify-content: center;
+}
+
+.spacer {
+    display: block;
+    height: 160lvh;
 }
