@@ -46,10 +46,7 @@ fn app() -> Html
     {
         <main id="app-wrapper" class={if *in_view { "in-view" } else { "" }}>
             <GithubImageButton />
-            <NameSection
-                title={"connellr023"}
-                message={"I need a degree."}
-            />
+            <NameSection name={"connellr023"} />
             <div class="spacer"></div>
         </main>
     }

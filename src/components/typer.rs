@@ -5,8 +5,8 @@ use crate::bindings::set_timeout;
 #[derive(Properties, PartialEq)]
 pub struct TyperProps
 {
-    pub class: Option<String>,
-    pub word: String,
+    pub class: Option<&'static str>,
+    pub word: &'static str,
     pub interval: u32
 }
 
@@ -15,7 +15,7 @@ pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
 {
     let end = use_state(|| 1);
     let end_clone = end.clone();
-    let word_clone = word.clone();
+    let word_ptr = *word;
     let interval_clone: u32 = interval.clone();
     let len = word.len();
 
@@ -24,7 +24,7 @@ pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
             let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
                 end_clone.set(
                     *end_clone +
-                        if word_clone.chars().nth(*end_clone).unwrap() == ' '
+                        if word_ptr.chars().nth(*end_clone).unwrap() == ' '
                         { 2 }
                         else
                         { 1 }
@@ -41,6 +41,6 @@ pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
 
     html!
     {
-        <span class={class}>{&word[0..*end]}</span>
+        <span class={*class}>{&word[0..*end]}</span>
     }
 }

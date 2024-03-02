@@ -16,6 +16,8 @@ main#app-wrapper {
     background-color: var(--c1);
     transition: background-color 0.25s ease-in-out;
     width: 100%;
+    display: flex;
+    justify-content: center;
 
     &.in-view {
         --c1: invert(var(--c1));

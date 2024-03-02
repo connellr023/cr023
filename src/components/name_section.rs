@@ -1,21 +1,23 @@
 use yew::prelude::*;
-use crate::components::typer::Typer;
+use crate::components::{typer::Typer, blinker::Blinker};
 
 #[derive(Properties, PartialEq)]
 pub struct NameSectionProps
 {
-    pub title: String,
-    pub message: String
+    pub name: &'static str
 }
 
 #[function_component(NameSection)]
-pub fn name_section(NameSectionProps { title, message }: &NameSectionProps) -> Html
+pub fn name_section(NameSectionProps { name }: &NameSectionProps) -> Html
 {
     html!
     {
         <div id="name-section-wrapper">
-            <h1 class={"title mono"}>{"{"}<a href="https://github.com/connellr023" target="_blank">{title}</a>{"}"}</h1>
-            <i class={"message"}><Typer word={message.clone()} interval={110} /></i>
+            <h1 class={"title mono"}>
+                <span class={"prefix"}>{"~$"}</span>
+                <Typer class={"name"} word={*name} interval={140} />
+                <Blinker symbol={"_"} interval={450} />
+            </h1>
         </div>
     }
 }
