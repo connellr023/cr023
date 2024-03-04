@@ -54,8 +54,13 @@ fn app() -> Html
             <GithubImageButton />
             <ScrollPrompt />
             <NameSection name={"connellr023"} />
-            <div id={"snippets-wrapper"} class={"mono"}>
-                <Snippet property={"cr023.skills"} value={r#"{ ["test"] }"#} />
+            <div id={"content-wrapper"}>
+                <div id={"snippets-wrapper"} class={"mono"}>
+                    <Snippet property={"cr023.languages"} value={r#"["Java", "PHP", "Typescript", "Rust", "C"]"#} />
+                    <Snippet property={"cr023.tools"} value={r#"["Node.js", "React.js", "Next.js", "Vue.js", "Yew.rs", "Vite"]"#} />
+                    <Snippet property={"cr023.testing"} value={r#"["Jest", "PHPUnit", "JUnit"]"#} />
+                    <Snippet property={"cr023.location"} value={r#""Calgary, AB""#} />
+                </div>
             </div>
             <div class={"spacer"} />
         </main>

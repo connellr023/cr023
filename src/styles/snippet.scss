@@ -1,16 +1,23 @@
 #snippets-wrapper {
-  position: absolute;
-  bottom: 10lvh;
-  width: 75%;
+  border-right: 2px solid var(--c4);
 }
 
 .snippet-wrapper {
-  opacity: 1;
-  transition: opacity 0.13s ease-in-out;
-  padding-bottom: 50px;
-  color: red;
-}
+  padding: 15px;
+  border-radius: 8px;
+  font-size: clamp(20px, 2lvw, 24px);
 
-.in-view .snippet-wrapper {
-  opacity: 0;
+  .property {
+    margin-bottom: 8px;
+    color: var(--c4);
+
+    span {
+      user-select: none;
+      margin-right: 10px;
+    }
+  }
+
+  .value {
+    color: var(--c3);
+  }
 }

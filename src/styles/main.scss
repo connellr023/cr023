@@ -5,11 +5,12 @@
 
 :root {
     --c1: #030303;
-    --c2: #52057B;
-    --c3: #892CDC;
+    --c2: #711A75;
+    --c3: #F10086;
     --c4: #e7e7e7;
     --sans-serif-font: "Ubuntu", sans-serif;
     --monospace-font: "Ubuntu Mono", monospace;
+    --fade-time: 0.2s;
 }
 
 main#app-wrapper {
@@ -22,7 +23,7 @@ main#app-wrapper {
 }
 
 .bg {
-    transition: background-color 0.25s ease-in-out;
+    transition: background-color var(--fade-time) ease-in-out;
     position: fixed;
     background-color: var(--c1);
     width: 100lvw;
@@ -52,4 +53,16 @@ body {
 .spacer {
     display: block;
     height: 160lvh;
+}
+
+#content-wrapper {
+    opacity: 1;
+    position: absolute;
+    top: 500px;
+    width: 75%;
+    transition: opacity var(--fade-time) ease-in-out;
+}
+
+.in-view #content-wrapper {
+    opacity: 0;
 }

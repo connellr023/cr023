@@ -4,7 +4,7 @@ a.gh-a {
     top: 12px;
     right: 15px;
     z-index: 10;
-    transition: filter 0.25s ease-in-out;
+    transition: filter var(--fade-time) ease-in-out;
 
     img {
         width: 6vw;
