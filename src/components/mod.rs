@@ -1,5 +1,5 @@
 pub mod name_section;
-mod typer;
+pub mod typer;
 pub mod gh_img_btn;
 mod blinker;
 pub mod scroll_prompt;

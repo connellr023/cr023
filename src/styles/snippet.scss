@@ -1,10 +1,10 @@
 #snippets-wrapper {
-  border-right: 2px solid var(--c4);
+  border-right: var(--side-border-width) solid var(--c3);
+  margin-top: 35px;
 }
 
 .snippet-wrapper {
-  padding: 15px;
-  border-radius: 8px;
+  padding: 15px 15px 15px 0;
   font-size: clamp(20px, 2lvw, 24px);
 
   .property {

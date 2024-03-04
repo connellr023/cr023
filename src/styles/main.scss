@@ -5,30 +5,26 @@
 
 :root {
     --c1: #030303;
-    --c2: #711A75;
+    --c2: #00f16b;
     --c3: #F10086;
     --c4: #e7e7e7;
     --sans-serif-font: "Ubuntu", sans-serif;
     --monospace-font: "Ubuntu Mono", monospace;
     --fade-time: 0.2s;
+    --side-border-width: 4px;
 }
 
 main#app-wrapper {
     overflow-y: auto;
     overflow-x: hidden;
+    transition: background-color var(--fade-time) ease-in-out;
+    background-color: var(--c1);
+    width: 100lvw;
+    height: max-content;
 
     &.in-view {
         --c1: invert(var(--c1));
     }
-}
-
-.bg {
-    transition: background-color var(--fade-time) ease-in-out;
-    position: fixed;
-    background-color: var(--c1);
-    width: 100lvw;
-    height: 100lvh;
-    z-index: -1;
 }
 
 body {
@@ -65,4 +61,10 @@ body {
 
 .in-view #content-wrapper {
     opacity: 0;
+}
+
+.abstract {
+    color: var(--c2);
+    border-right: var(--side-border-width) solid var(--c2);
+    font-size: clamp(21px, 2lvw, 26px);
 }

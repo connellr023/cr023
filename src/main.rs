@@ -8,7 +8,8 @@ use crate::components::{
     name_section::NameSection,
     gh_img_btn::GithubImageButton,
     scroll_prompt::ScrollPrompt,
-    snippet::Snippet
+    snippet::Snippet,
+    typer::Typer
 };
 
 #[function_component(App)]
@@ -50,14 +51,17 @@ fn app() -> Html
     html!
     {
         <main id={"app-wrapper"} class={format!("flex-wrapper {}", if *in_view { "in-view" } else { "" })}>
-            <div class={"bg"} />
             <GithubImageButton />
             <ScrollPrompt />
             <NameSection name={"connellr023"} />
             <div id={"content-wrapper"}>
+                <div class={"abstract"}>
+                    <Typer word={"I need a degree."} interval={130} />
+                </div>
                 <div id={"snippets-wrapper"} class={"mono"}>
                     <Snippet property={"cr023.languages"} value={r#"["Java", "PHP", "Typescript", "Rust", "C"]"#} />
-                    <Snippet property={"cr023.tools"} value={r#"["Node.js", "React.js", "Next.js", "Vue.js", "Yew.rs", "Vite"]"#} />
+                    <Snippet property={"cr023.frameworks"} value={r#"["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]"#} />
+                    <Snippet property={"cr023.tools"} value={r#"["git", "Vite"]"#} />
                     <Snippet property={"cr023.testing"} value={r#"["Jest", "PHPUnit", "JUnit"]"#} />
                     <Snippet property={"cr023.location"} value={r#""Calgary, AB""#} />
                 </div>
