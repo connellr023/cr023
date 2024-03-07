@@ -9,7 +9,8 @@ use crate::components::{
     gh_img_btn::GithubImageButton,
     scroll_prompt::ScrollPrompt,
     snippet::Snippet,
-    typer::Typer
+    typer::Typer,
+    blinker::Blinker
 };
 
 #[function_component(App)]
@@ -56,7 +57,8 @@ fn app() -> Html
             <NameSection name={"connellr023"} />
             <div id={"content-wrapper"}>
                 <div class={"abstract"}>
-                    <Typer word={"I need a degree."} interval={130} />
+                    <Typer reset={!(*in_view)} word={"I need a degree."} interval={70} />
+                    <Blinker symbol={"_"} interval={450} />
                 </div>
                 <div id={"snippets-wrapper"} class={"mono"}>
                     <Snippet property={"cr023.languages"} value={r#"["Java", "PHP", "Typescript", "Rust", "C"]"#} />

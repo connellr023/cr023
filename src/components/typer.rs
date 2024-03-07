@@ -7,24 +7,38 @@ pub struct TyperProps
 {
     pub class: Option<&'static str>,
     pub word: &'static str,
-    pub interval: u32
+    pub interval: u32,
+    pub reset: bool
 }
 
 #[function_component(Typer)]
-pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
+pub fn typer(TyperProps { class, word, interval, reset }: &TyperProps) -> Html
 {
     let end = use_state(|| 0);
     let end_clone = end.clone();
-    let word_ptr: &str = *word;
+    let reset_clone: bool = reset.clone();
+    let word_ref: &str = &word;
     let interval_clone: u32 = interval.clone();
     let len: usize = word.len();
+    let len_clone: usize = word.len();
 
     use_effect_with_deps(move |_| {
-        if *end_clone < len {
+        if *end_clone >= len_clone && reset_clone {
+            end_clone.set(0);
+        }
+
+        || {}
+    }, reset.clone());
+
+    let end_clone = end.clone();
+
+    use_effect_with_deps(move |_| {
+        if *end_clone < len
+        {
             let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
                 end_clone.set(
                     *end_clone +
-                        if word_ptr.chars().nth(*end_clone).unwrap() == ' '
+                        if word_ref.chars().nth(*end_clone).unwrap() == ' '
                         { 2 }
                         else
                         { 1 }
@@ -41,6 +55,6 @@ pub fn typer(TyperProps { class, word, interval }: &TyperProps) -> Html
 
     html!
     {
-        <span class={*class}>{&word[0..*end]}</span>
+        <span id={format!("{}", *reset)} class={*class}>{&word[0..*end]}</span>
     }
 }
