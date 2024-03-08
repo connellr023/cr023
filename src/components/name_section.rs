@@ -15,8 +15,10 @@ pub fn name_section(NameSectionProps { name }: &NameSectionProps) -> Html
         <div id="name-section-wrapper">
             <h1 class={"title mono"}>
                 <span class={"prefix"}>{"~$"}</span>
-                <Typer reset={false} class={"name"} word={*name} interval={140} />
-                <Blinker symbol={"_"} interval={450} />
+                <div class={"name-wrapper"}>
+                    <Typer reset={false} class={"name"} word={*name} interval={140} />
+                    <Blinker symbol={"_"} interval={450} />
+                </div>
             </h1>
         </div>
     }

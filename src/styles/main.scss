@@ -11,11 +11,10 @@
     --sans-serif-font: "Ubuntu", sans-serif;
     --monospace-font: "Ubuntu Mono", monospace;
     --fade-time: 0.2s;
-    --side-border-width: 4px;
 }
 
 main#app-wrapper {
-    overflow-y: auto;
+    overflow-y: visible;
     overflow-x: hidden;
     transition: background-color var(--fade-time) ease-in-out;
     background-color: var(--c1);
@@ -48,7 +47,7 @@ body {
 
 .spacer {
     display: block;
-    height: 160lvh;
+    height: 230lvh;
 }
 
 #content-wrapper {
@@ -65,6 +64,15 @@ body {
 
 .abstract {
     color: var(--c2);
-    border-right: var(--side-border-width) solid var(--c2);
+    border-color: var(--c2);
     font-size: clamp(21px, 2lvw, 26px);
+}
+
+.side-border {
+    border-right: 4px solid;
+    transition: border-right-width 0.12s ease-in-out;
+
+    &:hover {
+        border-right-width: 7px;
+    }
 }

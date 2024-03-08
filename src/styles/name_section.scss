@@ -19,9 +19,11 @@
       font-weight: bold;
       margin-right: 25px;
       padding: 6px 13px;
+      font-size: clamp(27px, 3lvw, 55px);
     }
 
-    .name {
+    .name-wrapper {
+      display: none;
       font-weight: normal;
     }
   }
@@ -37,5 +39,13 @@
 
   .title {
     margin-top: max(55px, 15lvh);
+
+    .prefix {
+      font-size: inherit;
+    }
+
+    .name-wrapper {
+      display: initial;
+    }
   }
 }

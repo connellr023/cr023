@@ -56,11 +56,11 @@ fn app() -> Html
             <ScrollPrompt />
             <NameSection name={"connellr023"} />
             <div id={"content-wrapper"}>
-                <div class={"abstract"}>
+                <div class={"abstract side-border"}>
                     <Typer reset={!(*in_view)} word={"I need a degree."} interval={70} />
                     <Blinker symbol={"_"} interval={450} />
                 </div>
-                <div id={"snippets-wrapper"} class={"mono"}>
+                <div id={"snippets-wrapper"} class={"mono side-border"}>
                     <Snippet property={"cr023.languages"} value={r#"["Java", "PHP", "Typescript", "Rust", "C"]"#} />
                     <Snippet property={"cr023.frameworks"} value={r#"["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]"#} />
                     <Snippet property={"cr023.tools"} value={r#"["git", "Vite"]"#} />
