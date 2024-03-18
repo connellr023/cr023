@@ -18,6 +18,28 @@
   }
 
   .value {
-    color: var(--c3);
+    color: var(--c5);
+
+    $space-padding: 7px;
+
+    span.bracket-token {
+
+      &.left {
+        padding-right: $space-padding;
+      }
+
+      &.right {
+        padding-left: $space-padding;
+      }
+    }
+
+    span.str-token {
+      color: var(--c3);
+    }
+
+    span.comma-token {
+      color: inherit;
+      padding-right: $space-padding;
+    }
   }
 }
