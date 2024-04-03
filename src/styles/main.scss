@@ -8,7 +8,7 @@
     --c2: #00f16b;
     --c3: #F10086;
     --c4: #e7e7e7;
-    --c5: #accae3;
+    --c5: #d2b915;
     --sans-serif-font: "Ubuntu", sans-serif;
     --monospace-font: "Ubuntu Mono", monospace;
     --fade-time: 0.2s;
@@ -37,6 +37,7 @@ body {
 }
 
 .mono {
+    font-weight: normal;
     font-family: var(--monospace-font);
 }
 
@@ -70,10 +71,25 @@ body {
 }
 
 .side-border {
+    box-sizing: border-box;
     border-right: 4px solid;
     transition: border-right-width 0.12s ease-in-out;
 
     &:hover {
         border-right-width: 7px;
+    }
+}
+
+.sub-heading {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 50px;
+
+    & > span {
+        color: var(--c2);
+    }
+
+    &:hover {
+        border-right-width: 8px;
     }
 }

@@ -61,12 +61,13 @@ fn app() -> Html
                     <Blinker symbol={"_"} interval={450} />
                 </div>
                 <div id={"snippets-wrapper"} class={"mono side-border"}>
-                    <Snippet property={"cr023.languages"} values={vec!["Java", "PHP", "Typescript", "Rust", "C"]} />
+                    <Snippet property={"cr023.languages"} values={vec!["Java", "PHP", "Typescript", "Rust", "C/C++"]} />
                     <Snippet property={"cr023.frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
-                    <Snippet property={"cr023.tools"} values={vec!["git", "Vite"]} />
                     <Snippet property={"cr023.testing"} values={vec!["Jest", "PHPUnit", "JUnit"]} />
+                    <Snippet property={"cr023.tools"} values={vec!["git"]} />
                     <Snippet property={"cr023.location"} values={vec!["Calgary, AB"]} />
                 </div>
+                <h2 class={"sub-heading mono side-border"}>{"cr023"}<span>{"."}</span>{"projects"}</h2>
             </div>
             <div class={"spacer"} />
         </main>
