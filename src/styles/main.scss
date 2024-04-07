@@ -2,6 +2,7 @@
 @import "name_section";
 @import "scroll_prompt";
 @import "snippet";
+@import "project_entry";
 
 :root {
     --c1: #030303;
@@ -81,15 +82,10 @@ body {
 }
 
 .sub-heading {
-    margin-top: 25px;
-    text-align: center;
+    margin-top: 35px;
     font-size: 50px;
 
     & > span {
         color: var(--c2);
-    }
-
-    &:hover {
-        border-right-width: 8px;
     }
 }

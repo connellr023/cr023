@@ -10,7 +10,8 @@ use crate::components::{
     scroll_prompt::ScrollPrompt,
     snippet::Snippet,
     typer::Typer,
-    blinker::Blinker
+    blinker::Blinker,
+    project_entry::ProjectEntry
 };
 
 #[function_component(App)]
@@ -20,7 +21,8 @@ fn app() -> Html
     let in_view = use_state(|| true);
     let in_view_clone = in_view.clone();
 
-    use_effect(move || {
+    use_effect(move ||
+    {
         let window_clone: Window = window.clone();
         let element: Element = window
             .document()
@@ -28,7 +30,8 @@ fn app() -> Html
             .get_element_by_id("name-section-wrapper")
             .unwrap_throw();
 
-        let callback: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
+        let callback: Closure<dyn FnMut()> = Closure::wrap(Box::new(move ||
+        {
             let window_scroll_y: f64 = window_clone.scroll_y().unwrap_throw();
             let element_scroll_height: f64 = element.scroll_height().into();
 
@@ -40,13 +43,10 @@ fn app() -> Html
             }
         }));
 
-        window.add_event_listener_with_callback("scroll", callback.as_ref().unchecked_ref())
-            .unwrap();
+        window.add_event_listener_with_callback("scroll", callback.as_ref().unchecked_ref()).unwrap();
 
-        move || {
-            window.remove_event_listener_with_callback("scroll", callback.as_ref().unchecked_ref())
-                .unwrap();
-        }
+        // Cleanup function for window scroll listener
+        move || { window.remove_event_listener_with_callback("scroll", callback.as_ref().unchecked_ref()).unwrap(); }
     });
 
     html!
@@ -68,6 +68,15 @@ fn app() -> Html
                     <Snippet property={"cr023.location"} values={vec!["Calgary, AB"]} />
                 </div>
                 <h2 class={"sub-heading mono side-border"}>{"cr023"}<span>{"."}</span>{"projects"}</h2>
+                <div class={"projects-wrapper"}>
+                    <ProjectEntry
+                        name={"Chatter"}
+                        version={"v1.0.3"}
+                        images={vec![("sample", "tmp.png")]}
+                        url={"https://github.com/connellr023/Chatter"}
+                        description={"A web based chat application that is entirely oriented around temporary sessions."}
+                    />
+                </div>
             </div>
             <div class={"spacer"} />
         </main>
