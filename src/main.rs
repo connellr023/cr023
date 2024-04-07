@@ -67,13 +67,14 @@ fn app() -> Html
                     <Snippet property={"cr023.tools"} values={vec!["git"]} />
                     <Snippet property={"cr023.location"} values={vec!["Calgary, AB"]} />
                 </div>
-                <h2 class={"sub-heading mono side-border"}>{"cr023"}<span>{"."}</span>{"projects"}</h2>
+                <div class={"mono sub-heading side-border"}>{"Projects"}<span>{"::"}</span></div>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"Chatter"}
                         version={"v1.0.3"}
                         images={vec![("Chatter Home Page Screen", "assets/chatter/home.PNG"), ("Chatter Empty Chat Screen", "assets/chatter/empty_chat.PNG"), ("Chatter Chat Screen", "assets/chatter/chat.PNG")]}
                         repo_url={"https://github.com/connellr023/Chatter"}
+                        site_url={"https://chatter-lqqb.onrender.com/"}
                         description={"A web based chat application that is entirely oriented around temporary sessions."}
                     />
                 </div>

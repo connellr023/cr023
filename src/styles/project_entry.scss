@@ -1,5 +1,98 @@
 div.project-entry-item {
   h3.project-name {
-    
+    font-size: 45px;
+    margin-bottom: 0;
+
+    & > span {
+      font-style: italic;
+      font-size: 20px;
+      margin-left: 30px;
+      color: var(--c1);
+      background-color: var(--c5);
+      padding: 4px;
+      text-align: right;
+    }
   }
+
+  p.project-desc {
+    font-size: 18px;
+    opacity: 0.7;
+  }
+
+  div.project-links {
+    text-align: center;
+
+    div.link-entry {
+      font-style: italic;
+      margin-top: 20px;
+
+      & > a {
+        color: var(--c3);
+
+        &:hover {
+          color: var(--c5);
+        }
+      }
+
+      & > .link-title {
+        font-style: normal;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  div.image-wrapper {
+    text-align: center;
+    width: inherit;
+    height: inherit;
+
+    img.current-image {
+      border-radius: 10px;
+      user-select: none;
+      object-fit: cover;
+      width: 60%;
+      min-width: 250px;
+      max-width: 700px;
+      margin-bottom: 10px;
+    }
+
+    button.image-switch-button {
+      cursor: pointer;
+      height: 60px;
+      position: absolute;
+      top: 75%;
+      font-size: clamp(25px, 5lvw, 45px);
+      height: fit-content;
+      color: var(--c1);
+      background-color: var(--c4);
+      padding: 8px;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      transition: opacity 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &.left {
+        left: 0;
+      }
+
+      &.right {
+        right: 0;
+      }
+    }
+
+    span.indicator-element {
+      user-select: none;
+      padding: 6px;
+      font-size: 30px;
+      transition: color 0.2s ease-in-out;
+
+      &.selected {
+        color: var(--c2);
+      }
+    }
+  }  
 }

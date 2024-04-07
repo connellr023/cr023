@@ -37,29 +37,57 @@ pub fn project_entry(ProjectEntryProps { name, description, version, images, rep
     html!
     {
     	<div class={"project-entry-item"}>
-    		<div>
-    			<h3 class={"project-name"}>{name}</h3>
-    			<div class={"project-version"}>{version}</div>
-    		</div>
-    		<p class={"project-desc"}>{description}</p>
-            <button class={"image-switch-button"} onclick={prev_image}>{"<"}</button>
-    		<img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
-            <button class={"image-switch-button"} onclick={next_image}>{">"}</button>
-    		{render_option_url(repo_url, "repo-url", "no-repo-url", "This project is not open source")}
-            {render_option_url(site_url, "site-url", "no-site-url", "This project does not have a website currently")}
-    	</div>
+            <h3 class={"project-name mono"}>
+                {name}
+                <span class={"project-version"}>{version}</span>
+            </h3>
+    		<p class={"project-desc mono"}>{description}</p>
+            <div class={"image-wrapper"}>
+                <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
+                <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
+                <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
+                {render_carousel_index_indicator(*current_index, images_len)}
+            </div>
+            <div class={"project-links mono"}>
+                <div class={"link-entry"}>
+                    <span class={"link-title"}>{"Project Repository"}</span>
+                    {render_option_url(repo_url, "project-url repo-url", "no-repo-url", "This project is not open source")}
+                </div>
+                <div class={"link-entry"}>
+                    <span class={"link-title"}>{"Project Deployment"}</span>
+                    {render_option_url(site_url, "project-url site-url", "no-site-url", "This project is not currently deployed")}
+                </div>
+    	    </div>
+        </div>
     }
 }
 
-fn render_option_url(url: &Option<&str>, exists_class: &'static str, not_exists_class: &'static str, not_exists_msg: &'static str) -> Html
+fn render_option_url(url: &Option<&'static str>, exists_class: &'static str, not_exists_class: &'static str, not_exists_msg: &'static str) -> Html
 {
     match *url
     {
     	Some(url_val) => {
-    	   html! { <div><a class={exists_class}>{url_val}</a></div> }
+    	   html! { <a class={exists_class} href={url_val} target={"_blank"}>{url_val}</a> }
     	},
     	None => {
-    	   html! { <div class={not_exists_class}>{not_exists_msg}</div> }
+    	   html! { <span class={not_exists_class}>{not_exists_msg}</span> }
     	}
+    }
+}
+
+fn render_carousel_index_indicator(current_index: usize, image_count: usize) -> Html
+{
+    html!
+    {
+        <div class={"carousel-indicator"}>
+            { for (0..image_count).map(|i| {
+                if i == current_index {
+                    html! { <span class={"indicator-element selected"}>{"0"}</span> }
+                }
+                else {
+                    html! { <span class={"indicator-element"}>{"o"}</span> }
+                }
+            }) }
+        </div>
     }
 }

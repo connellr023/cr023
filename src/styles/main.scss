@@ -5,87 +5,92 @@
 @import "project_entry";
 
 :root {
-    --c1: #030303;
-    --c2: #00f16b;
-    --c3: #F10086;
-    --c4: #e7e7e7;
-    --c5: #d2b915;
-    --sans-serif-font: "Ubuntu", sans-serif;
-    --monospace-font: "Ubuntu Mono", monospace;
-    --fade-time: 0.2s;
+  --c1: #030303;
+  --c2: #00f16b;
+  --c3: #F10086;
+  --c4: #e7e7e7;
+  --c5: #d2b915;
+  --sans-serif-font: "Ubuntu", sans-serif;
+  --monospace-font: "Ubuntu Mono", monospace;
+  --fade-time: 0.2s;
 }
 
 main#app-wrapper {
-    overflow-y: visible;
-    overflow-x: hidden;
-    transition: background-color var(--fade-time) ease-in-out;
-    background-color: var(--c1);
-    width: 100lvw;
-    height: max-content;
+  overflow-y: visible;
+  overflow-x: hidden;
+  transition: background-color var(--fade-time) ease-in-out;
+  background-color: var(--c1);
+  width: 100lvw;
+  height: max-content;
 
-    &.in-view {
-        --c1: invert(var(--c1));
-    }
+  &.in-view {
+    --c1: invert(var(--c1));
+  }
 }
 
 body {
-    font-family: var(--sans-serif-font);
-    font-optical-sizing: auto;
-    color: var(--c4);
-    animation: 0.3s ease-in-out fade-in;
-    scrollbar-width: thin;
-    margin: auto;
+  font-family: var(--sans-serif-font);
+  font-optical-sizing: auto;
+  color: var(--c4);
+  animation: 0.3s ease-in-out fade-in;
+  scrollbar-width: thin;
+  margin: auto;
 }
 
 .mono {
-    font-weight: normal;
-    font-family: var(--monospace-font);
+  font-weight: normal;
+  font-family: var(--monospace-font);
 }
 
 .flex-wrapper {
-    width: 100lvw;
-    display: flex;
-    justify-content: center;
+  width: 100lvw;
+  display: flex;
+  justify-content: center;
 }
 
 .spacer {
-    display: block;
-    height: 230lvh;
+  display: block;
+  height: 390lvh;
 }
 
 #content-wrapper {
-    opacity: 1;
-    position: absolute;
-    top: 500px;
-    width: 75%;
-    transition: opacity var(--fade-time) ease-in-out;
+  opacity: 1;
+  position: absolute;
+  top: 500px;
+  width: 75%;
+  transition: opacity var(--fade-time) ease-in-out;
 }
 
 .in-view #content-wrapper {
-    opacity: 0;
+  opacity: 0;
 }
 
 .abstract {
-    color: var(--c2);
-    border-color: var(--c2);
-    font-size: clamp(21px, 2lvw, 26px);
+  color: var(--c2);
+  border-color: var(--c2);
+  font-size: clamp(21px, 2lvw, 26px);
 }
 
 .side-border {
-    box-sizing: border-box;
-    border-right: 4px solid;
-    transition: border-right-width 0.12s ease-in-out;
+  box-sizing: border-box;
+  border-right: 4px solid;
+  transition: border-right-width 0.12s ease-in-out;
 
-    &:hover {
-        border-right-width: 7px;
-    }
+  &:hover {
+    border-right-width: 7px;
+  }
 }
 
 .sub-heading {
-    margin-top: 35px;
-    font-size: 50px;
+  margin-top: 35px;
+  font-size: 45px;
+  border-color: var(--c2);
 
-    & > span {
-        color: var(--c2);
-    }
+  & > span {
+    color: var(--c2);
+  }
+}
+
+div.projects-wrapper {
+  margin-top: 100px;
 }
