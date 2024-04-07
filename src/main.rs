@@ -72,8 +72,8 @@ fn app() -> Html
                     <ProjectEntry
                         name={"Chatter"}
                         version={"v1.0.3"}
-                        images={vec![("sample", "tmp.png")]}
-                        url={"https://github.com/connellr023/Chatter"}
+                        images={vec![("Chatter Home Page Screen", "assets/chatter/home.PNG"), ("Chatter Empty Chat Screen", "assets/chatter/empty_chat.PNG"), ("Chatter Chat Screen", "assets/chatter/chat.PNG")]}
+                        repo_url={"https://github.com/connellr023/Chatter"}
                         description={"A web based chat application that is entirely oriented around temporary sessions."}
                     />
                 </div>
