@@ -73,9 +73,10 @@ fn app() -> Html
                         name={"Chatter"}
                         version={"v1.0.3"}
                         images={vec![("Chatter Home Page Screen", "assets/chatter/home.PNG"), ("Chatter Empty Chat Screen", "assets/chatter/empty_chat.PNG"), ("Chatter Chat Screen", "assets/chatter/chat.PNG")]}
+                        contributers={vec!["Connell Reffo"]}
                         repo_url={"https://github.com/connellr023/Chatter"}
                         site_url={"https://chatter-lqqb.onrender.com/"}
-                        description={"A web based chat application that is entirely oriented around temporary sessions."}
+                        description={"Chatter is a web app centered around a global chat system. It features isolated chat rooms that users can connect to without requiring an account. Currently, all chat rooms are global, however there is infrastructure in place within the server the API to allow for private chat rooms in the future."}
                     />
                 </div>
             </div>

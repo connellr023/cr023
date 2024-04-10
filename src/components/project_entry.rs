@@ -7,12 +7,13 @@ pub struct ProjectEntryProps
     pub description: &'static str,
     pub version: &'static str,
     pub images: Vec<(&'static str, &'static str)>,
+    pub contributers: Vec<&'static str>,
     pub repo_url: Option<&'static str>,
     pub site_url: Option<&'static str>
 }
 
 #[function_component(ProjectEntry)]
-pub fn project_entry(ProjectEntryProps { name, description, version, images, repo_url, site_url }: &ProjectEntryProps) -> Html
+pub fn project_entry(ProjectEntryProps { name, description, version, images, contributers, repo_url, site_url }: &ProjectEntryProps) -> Html
 {
     let current_index = use_state(|| 0);
     let images_len = images.len().clone();
@@ -40,6 +41,11 @@ pub fn project_entry(ProjectEntryProps { name, description, version, images, rep
             <h3 class={"project-name mono"}>
                 {name}
                 <span class={"project-version"}>{version}</span>
+                <div>
+                    { for contributers.iter().map(|contributer| {
+                        html! { <span class={"contributer"}>{contributer}</span> }
+                    }) }
+                </div>
             </h3>
     		<p class={"project-desc mono"}>{description}</p>
             <div class={"image-wrapper"}>
