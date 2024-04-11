@@ -75,8 +75,26 @@ fn app() -> Html
                         images={vec![("Chatter Home Page Screen", "assets/chatter/home.PNG"), ("Chatter Empty Chat Screen", "assets/chatter/empty_chat.PNG"), ("Chatter Chat Screen", "assets/chatter/chat.PNG")]}
                         contributers={vec!["Connell Reffo"]}
                         repo_url={"https://github.com/connellr023/Chatter"}
-                        site_url={"https://chatter-lqqb.onrender.com/"}
+                        site_url={"https://chatter-lqqb.onrender.com"}
                         description={"Chatter is a web app centered around a global chat system. It features isolated chat rooms that users can connect to without requiring an account. Currently, all chat rooms are global, however there is infrastructure in place within the server the API to allow for private chat rooms in the future."}
+                    />
+                    <ProjectEntry
+                        name={"Atla"}
+                        version={"v1.0.0"}
+                        images={vec![("Atla Welcome Screen", "assets/atla/1.PNG"), ("Atla Blank Map", "assets/atla/2.PNG"), ("Atla Add Event Map", "assets/atla/3.PNG"), ("Atla Open Event Screen", "assets/atla/4.PNG"), ("Atla View Event Screen", "assets/atla/5.PNG")]}
+                        contributers={vec!["Connell Reffo", "Tara Strickland"]}
+                        repo_url={"https://github.com/connellr023/Atla"}
+                        site_url={"https://atla-ch2024.vercel.app"}
+                        description={"Your Hub for Volunteering Events and more, Alta (made for Calgary Hacks 2024) aims to bring the Calgarian community together by providing a centralized platform to post and view volunteering events."}
+                    />
+                    <ProjectEntry
+                        name={"gratis"}
+                        version={"v1.0.1"}
+                        images={vec![("Gratis Logo", "assets/gratis/logo.png")]}
+                        contributers={vec!["Connell Reffo"]}
+                        repo_url={"https://github.com/connellr023/gratis"}
+                        site_url={"https://packagist.org/packages/connell/gratis"}
+                        description={"Gratis is a versatile framework designed to promote the separation of concerns, fostering scalable code practices by encapsulating logic within handlers. Primarily tailored for creating robust and scalable APIs that follow the CRUD lifecycle, the framework follows a REST-like architectural style. It allows form seamless interactions with SQL databases, providing a structured and efficient foundation for building web applications."}
                     />
                 </div>
             </div>

@@ -1,4 +1,6 @@
 div.project-entry-item {
+  margin-bottom: 40px;
+
   h3.project-name {
     font-size: 45px;
     margin-bottom: 0;
@@ -15,10 +17,11 @@ div.project-entry-item {
   }
 
   p.project-desc {
-    font-size: 18px;
+    font-size: clamp(17px, 1.3vw, 23px);
     opacity: 0.7;
     margin-top: 7px;
-    margin-bottom: 7px;
+    margin-bottom: 15px;
+    padding-right: 8px;
   }
 
   div.project-links {
@@ -31,6 +34,7 @@ div.project-entry-item {
 
       & > a {
         color: var(--c3);
+        transition: color 0.1s ease-in-out;
 
         &:hover {
           color: var(--c5);
@@ -62,8 +66,6 @@ div.project-entry-item {
     button.image-switch-button {
       cursor: pointer;
       height: 60px;
-      position: absolute;
-      top: 75%;
       font-size: clamp(25px, 5lvw, 45px);
       height: fit-content;
       color: var(--c1);

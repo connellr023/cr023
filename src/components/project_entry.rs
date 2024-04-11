@@ -44,7 +44,7 @@ pub fn project_entry(ProjectEntryProps { name, description, version, images, con
                 <span>{"::"}</span>
                 <span class={"project-version"}>{version}</span>
             </h3>
-            <Snippet property={"contributers"} values={vec!["Connell Reffo"]} />
+            <Snippet property={"contributers"} values={contributers.clone()} />
     		<p class={"project-desc mono side-border"}>{description}</p>
             <div class={"image-wrapper"}>
                 <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
