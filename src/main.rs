@@ -67,7 +67,7 @@ fn app() -> Html
                     <Snippet property={"cr023.tools"} values={vec!["git"]} />
                     <Snippet property={"cr023.location"} values={vec!["Calgary, AB"]} />
                 </div>
-                <div class={"mono sub-heading side-border"}>{"Projects"}<span>{"::"}</span></div>
+                <h3 class={"mono sub-heading side-border"}>{"Projects"}<span>{"::"}</span></h3>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"Chatter"}

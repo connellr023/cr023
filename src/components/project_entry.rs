@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use crate::components::snippet::Snippet;
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
@@ -38,16 +39,13 @@ pub fn project_entry(ProjectEntryProps { name, description, version, images, con
     html!
     {
     	<div class={"project-entry-item"}>
-            <h3 class={"project-name mono"}>
+            <h3 class={"project-name sub-heading mono"}>
                 {name}
+                <span>{"::"}</span>
                 <span class={"project-version"}>{version}</span>
-                <div>
-                    { for contributers.iter().map(|contributer| {
-                        html! { <span class={"contributer"}>{contributer}</span> }
-                    }) }
-                </div>
             </h3>
-    		<p class={"project-desc mono"}>{description}</p>
+            <Snippet property={"contributers"} values={vec!["Connell Reffo"]} />
+    		<p class={"project-desc mono side-border"}>{description}</p>
             <div class={"image-wrapper"}>
                 <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
                 <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />

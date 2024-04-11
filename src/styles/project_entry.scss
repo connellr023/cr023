@@ -3,7 +3,7 @@ div.project-entry-item {
     font-size: 45px;
     margin-bottom: 0;
 
-    & > span {
+    & > span.project-version {
       font-style: italic;
       font-size: 20px;
       margin-left: 30px;
@@ -17,6 +17,7 @@ div.project-entry-item {
   p.project-desc {
     font-size: 18px;
     opacity: 0.7;
+    margin-top: 7px;
     margin-bottom: 7px;
   }
 

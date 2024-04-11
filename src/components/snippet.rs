@@ -15,7 +15,7 @@ pub fn snippet(SnippetProps { property, values }: &SnippetProps) -> Html
 
     html!
     {
-        <div class={"snippet-wrapper"}>
+        <div class={"snippet-wrapper mono"}>
             <div class={"property"}><span>{">"}</span>{*property}</div>
             <div class={"value"}>
                 <span class={"bracket-token left"}>{"{"}</span>
