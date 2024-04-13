@@ -56,18 +56,19 @@ fn app() -> Html
             <ScrollPrompt />
             <NameSection name={"connellr023"} />
             <div id={"content-wrapper"}>
+                <h3 class={"section"}>{"About"}</h3>
                 <div class={"abstract side-border"}>
                     <Typer reset={!(*in_view)} word={"I need a degree."} interval={70} />
                     <Blinker symbol={"_"} interval={450} />
                 </div>
                 <div id={"snippets-wrapper"} class={"mono side-border"}>
-                    <Snippet property={"cr023.languages"} values={vec!["Java", "PHP", "Typescript", "Rust", "C/C++"]} />
-                    <Snippet property={"cr023.frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
-                    <Snippet property={"cr023.testing"} values={vec!["Jest", "PHPUnit", "JUnit"]} />
-                    <Snippet property={"cr023.tools"} values={vec!["git"]} />
-                    <Snippet property={"cr023.location"} values={vec!["Calgary, AB"]} />
+                    <Snippet object={"cr023"} property={"languages"} values={vec!["Java", "PHP", "Typescript", "Rust", "C/C++"]} />
+                    <Snippet object={"cr023"} property={"frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
+                    <Snippet object={"cr023"} property={"testing"} values={vec!["Jest", "PHPUnit", "JUnit"]} />
+                    <Snippet object={"cr023"} property={"tools"} values={vec!["git"]} />
+                    <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </div>
-                <h3 class={"mono sub-heading side-border"}>{"Projects"}<span>{"::"}</span></h3>
+                <h3 class={"section"}>{"Projects"}</h3>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"Chatter"}
@@ -90,7 +91,6 @@ fn app() -> Html
                     <ProjectEntry
                         name={"gratis"}
                         version={"v1.0.1"}
-                        images={vec![("Gratis Logo", "assets/gratis/logo.png")]}
                         contributers={vec!["Connell Reffo"]}
                         repo_url={"https://github.com/connellr023/gratis"}
                         site_url={"https://packagist.org/packages/connell/gratis"}

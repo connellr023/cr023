@@ -1,5 +1,5 @@
 use yew::prelude::*;
-use crate::components::snippet::Snippet;
+use crate::components::string_set::StringSet;
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
@@ -7,51 +7,26 @@ pub struct ProjectEntryProps
     pub name: &'static str,
     pub description: &'static str,
     pub version: &'static str,
-    pub images: Vec<(&'static str, &'static str)>,
     pub contributers: Vec<&'static str>,
+    pub images: Option<Vec<(&'static str, &'static str)>>,
     pub repo_url: Option<&'static str>,
     pub site_url: Option<&'static str>
 }
 
 #[function_component(ProjectEntry)]
-pub fn project_entry(ProjectEntryProps { name, description, version, images, contributers, repo_url, site_url }: &ProjectEntryProps) -> Html
+pub fn project_entry(ProjectEntryProps { name, description, version, contributers, images, repo_url, site_url }: &ProjectEntryProps) -> Html
 {
-    let current_index = use_state(|| 0);
-    let images_len = images.len().clone();
-
-    let current_index_clone = current_index.clone();
-    let next_image = Callback::from(move |_|
-    {
-        current_index_clone.set((*current_index_clone + 1) % images_len);
-    });
-
-    let current_index_clone = current_index.clone();
-    let prev_image = Callback::from(move |_|
-    {
-        if *current_index_clone == 0 {
-            current_index_clone.set(images_len - 1);
-        }
-        else {
-            current_index_clone.set(*current_index_clone - 1)
-        }
-    });
-
     html!
     {
     	<div class={"project-entry-item"}>
-            <h3 class={"project-name sub-heading mono"}>
+            <h3 class={"project-name mono"}>
                 {name}
                 <span>{"::"}</span>
                 <span class={"project-version"}>{version}</span>
             </h3>
-            <Snippet property={"contributers"} values={contributers.clone()} />
+            <StringSet values={contributers.clone()} />
     		<p class={"project-desc mono side-border"}>{description}</p>
-            <div class={"image-wrapper"}>
-                <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
-                <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
-                <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
-                {render_carousel_index_indicator(*current_index, images_len)}
-            </div>
+            {render_image_content(images)}
             <div class={"project-links mono"}>
                 <div class={"link-entry"}>
                     <span class={"link-title"}>{"Project Repository"}</span>
@@ -63,6 +38,47 @@ pub fn project_entry(ProjectEntryProps { name, description, version, images, con
                 </div>
     	    </div>
         </div>
+    }
+}
+
+fn render_image_content(images: &Option<Vec<(&'static str, &'static str)>>) -> Html
+{
+    match images
+    {
+        Some(images) => {
+            let current_index = use_state(|| 0);
+            let images_len = images.len().clone();
+
+            let current_index_clone = current_index.clone();
+            let next_image = Callback::from(move |_|
+            {
+                current_index_clone.set((*current_index_clone + 1) % images_len);
+            });
+
+            let current_index_clone = current_index.clone();
+            let prev_image = Callback::from(move |_|
+            {
+                if *current_index_clone == 0 {
+                    current_index_clone.set(images_len - 1);
+                }
+                else {
+                    current_index_clone.set(*current_index_clone - 1)
+                }
+            });
+
+            html!
+            {
+                <div class={"image-wrapper"}>
+                    <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
+                    <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
+                    <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
+                    {render_carousel_index_indicator(*current_index, images_len)}
+                </div>
+            }
+        },
+        None => {
+            html! {}
+        }
     }
 }
 

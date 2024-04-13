@@ -3,6 +3,7 @@
 @import "scroll_prompt";
 @import "snippet";
 @import "project_entry";
+@import "string_set";
 
 :root {
   --c1: #030303;
@@ -50,7 +51,7 @@ body {
 
 .spacer {
   display: block;
-  height: 460lvh;
+  height: 560lvh;
 }
 
 #content-wrapper {
@@ -65,10 +66,17 @@ body {
   opacity: 0;
 }
 
+#snippets-wrapper {
+  border-color: var(--c3);
+  margin-top: 35px;
+  margin-bottom: 65px;
+}
+
 .abstract {
   color: var(--c2);
   border-color: var(--c2);
   font-size: clamp(21px, 2lvw, 26px);
+  margin-top: 60px;
 }
 
 .side-border {
@@ -81,16 +89,25 @@ body {
   }
 }
 
-.sub-heading {
-  margin-top: 35px;
-  font-size: 45px;
-  border-color: var(--c2);
-
-  & > span {
-    color: var(--c2);
-  }
-}
-
 div.projects-wrapper {
   margin-top: 100px;
+}
+
+.section {
+  position: relative;
+  text-align: center;
+  font-weight: normal;
+  font-size: clamp(42px, 1.2lvw, 48px);
+
+  &::after {
+    content: " ";
+    margin: 0;
+    border-bottom: 5px solid var(--c2);
+    width: 75px;
+    margin-top: 16px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
