@@ -16,27 +16,36 @@ pub struct ProjectEntryProps
 #[function_component(ProjectEntry)]
 pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack, images, repo_url, site_url }: &ProjectEntryProps) -> Html
 {
+    let hidden = use_state(|| true);
+
+    let hidden_clone = hidden.clone();
+    let toggle_hidden_content = Callback::from(move |_|
+    {
+        hidden_clone.set(!(*hidden_clone));
+    });
+
     html!
     {
     	<div class={"project-entry-item"}>
-            <div class="project-info-wrapper">
+            <div onclick={toggle_hidden_content} class="project-info-wrapper">
                 <span class={"project-name mono"}>{name}</span>
                 <span class={"project-version"}>{version}</span>
             </div>
-            <StringSet values={tech_stack.clone()} />
-    		<p class={"project-desc mono side-border"}>{description}</p>
-            {render_image_content(images)}
-            <div class={"project-links mono"}>
-                <div class={"link-entry"}>
-                    <span class={"link-title"}>{"Project Repository"}</span>
-                    {render_option_url(repo_url, "project-url repo-url", "no-repo-url", "This project is not open source")}
+            <div class={"project-content"} hidden={*hidden}>
+                <StringSet values={tech_stack.clone()} />
+                <p class={"project-desc mono side-border"}>{description}</p>
+                {render_image_content(images)}
+                <div class={"project-links mono"}>
+                    <div class={"link-entry"}>
+                        <span class={"link-title"}>{"Project Repository"}</span>
+                        {render_option_url(repo_url, "project-url repo-url", "no-repo-url", "This project is not open source")}
+                    </div>
+                    <div class={"link-entry"}>
+                        <span class={"link-title"}>{"Project Deployment"}</span>
+                        {render_option_url(site_url, "project-url site-url", "no-site-url", "This project is not currently deployed")}
+                    </div>
                 </div>
-                <div class={"link-entry"}>
-                    <span class={"link-title"}>{"Project Deployment"}</span>
-                    {render_option_url(site_url, "project-url site-url", "no-site-url", "This project is not currently deployed")}
-                </div>
-    	    </div>
-            <div class={"seperator"} />
+            </div>
         </div>
     }
 }
