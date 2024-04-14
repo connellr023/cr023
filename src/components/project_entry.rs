@@ -7,24 +7,23 @@ pub struct ProjectEntryProps
     pub name: &'static str,
     pub description: &'static str,
     pub version: &'static str,
-    pub contributers: Vec<&'static str>,
+    pub tech_stack: Vec<&'static str>,
     pub images: Option<Vec<(&'static str, &'static str)>>,
     pub repo_url: Option<&'static str>,
     pub site_url: Option<&'static str>
 }
 
 #[function_component(ProjectEntry)]
-pub fn project_entry(ProjectEntryProps { name, description, version, contributers, images, repo_url, site_url }: &ProjectEntryProps) -> Html
+pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack, images, repo_url, site_url }: &ProjectEntryProps) -> Html
 {
     html!
     {
     	<div class={"project-entry-item"}>
-            <h3 class={"project-name mono"}>
-                {name}
-                <span>{"::"}</span>
+            <div class="project-info-wrapper">
+                <span class={"project-name mono"}>{name}</span>
                 <span class={"project-version"}>{version}</span>
-            </h3>
-            <StringSet values={contributers.clone()} />
+            </div>
+            <StringSet values={tech_stack.clone()} />
     		<p class={"project-desc mono side-border"}>{description}</p>
             {render_image_content(images)}
             <div class={"project-links mono"}>
@@ -37,6 +36,7 @@ pub fn project_entry(ProjectEntryProps { name, description, version, contributer
                     {render_option_url(site_url, "project-url site-url", "no-site-url", "This project is not currently deployed")}
                 </div>
     	    </div>
+            <div class={"seperator"} />
         </div>
     }
 }
@@ -69,9 +69,11 @@ fn render_image_content(images: &Option<Vec<(&'static str, &'static str)>>) -> H
             html!
             {
                 <div class={"image-wrapper"}>
-                    <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
-                    <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
-                    <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
+                    <div class={"image-content"}>
+                        <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
+                        <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
+                        <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
+                    </div>
                     {render_carousel_index_indicator(*current_index, images_len)}
                 </div>
             }
