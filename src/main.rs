@@ -10,7 +10,6 @@ use crate::components::{
     scroll_prompt::ScrollPrompt,
     snippet::Snippet,
     typer::Typer,
-    blinker::Blinker,
     project_entry::ProjectEntry
 };
 
@@ -54,22 +53,28 @@ fn app() -> Html
         <main id={"app-wrapper"} class={format!("flex-wrapper {}", if *in_view { "in-view" } else { "" })}>
             <GithubImageButton />
             <ScrollPrompt />
-            <NameSection name={"connellr023"} />
+            <NameSection name={"connellr023"} reset={*in_view} />
             <div id={"content-wrapper"}>
-                <h3 class={"section"}>{"About"}</h3>
+                <h3 class={"section"}><Typer reset={!(*in_view)} word={"About"} interval={140} start_index={1} /></h3>
                 <div class={"abstract side-border"}>
-                    <Typer reset={!(*in_view)} word={"I need a degree."} interval={70} />
-                    <Blinker symbol={"_"} interval={450} />
+                    <span>{"I am a versatile programmer with a strong command of a wide array of tools and languages. My expertise spans both object-oriented and functional programming paradigms, and I excel in testing using a variety of languages and frameworks. Adaptable and passionate, I bring a dynamic approach to solving complex problems in software development."}</span>
                 </div>
                 <div id={"snippets-wrapper"} class={"mono side-border"}>
                     <Snippet object={"cr023"} property={"languages"} values={vec!["Java", "PHP", "Typescript", "Rust", "C/C++"]} />
                     <Snippet object={"cr023"} property={"frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
+                    <Snippet object={"cr023"} property={"databases"} values={vec!["SQL", "RedisKV", "MongoDB"]} />
                     <Snippet object={"cr023"} property={"testing"} values={vec!["Jest", "Vitest", "PHPUnit", "JUnit"]} />
                     <Snippet object={"cr023"} property={"tools"} values={vec!["git"]} />
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </div>
-                <h3 class={"section"}>{"Projects"}</h3>
+                <h3 class={"section"}>{"Main Projects"}</h3>
                 <div class={"projects-wrapper"}>
+                    <ProjectEntry
+                        name={"cr023"}
+                        version={"indev"}
+                        tech_stack={vec!["Yew.rs", "Rust", "WebAssembly"]}
+                        description={"The website you are currently on! A portfolio to showcase my work. This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the Yew framework which is very similar to React for creating front end web services."}
+                    />
                     <ProjectEntry
                         name={"Chatter"}
                         version={"v1.0.3"}

@@ -8,13 +8,14 @@ pub struct TyperProps
     pub class: Option<&'static str>,
     pub word: &'static str,
     pub interval: u32,
-    pub reset: bool
+    pub reset: bool,
+    pub start_index: Option<usize>,
 }
 
 #[function_component(Typer)]
-pub fn typer(TyperProps { class, word, interval, reset }: &TyperProps) -> Html
+pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperProps) -> Html
 {
-    let end = use_state(|| 0);
+    let end = use_state(|| { if let Some(start_index) = start_index { *start_index } else { 0usize } });
     let end_clone = end.clone();
     let reset_clone: bool = reset.clone();
     let word_ref: &str = &word;
