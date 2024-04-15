@@ -89,6 +89,15 @@ fn app() -> Html
                         description={"Your Hub for Volunteering Events and more, Alta (made for Calgary Hacks 2024) aims to bring the Calgarian community together by providing a centralized platform to post and view volunteering events."}
                     />
                     <ProjectEntry
+                        name={"Crumble"}
+                        version={"v1.0.0"}
+                        images={vec![("Crumble Start Screen", "assets/crumble/1.png"), ("Crumble Queue Screen", "assets/crumble/2.png"), ("Crumble Game Screen 1", "assets/crumble/3.png"), ("Crumble Game Screen 2", "assets/crumble/4.png"), ("Crumble Falling Player", "assets/crumble/5.png"), ("Crumble Win Screen", "assets/crumble/6.png")]}
+                        tech_stack={vec!["p5.js", "typescript", "jquery"]}
+                        repo_url={"https://github.com/connellr023/Crumble"}
+                        site_url={"https://crumble-b4fq.onrender.com"}
+                        description={"A top-down view web game where you must battle another opponent with a rocket launcher on a crumbling map."}
+                    />
+                    <ProjectEntry
                         name={"gratis"}
                         version={"v1.0.1"}
                         tech_stack={vec!["PHP 8.3"]}
