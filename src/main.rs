@@ -10,7 +10,8 @@ use crate::components::{
     scroll_prompt::ScrollPrompt,
     snippet::Snippet,
     typer::Typer,
-    project_entry::ProjectEntry
+    project_entry::ProjectEntry,
+    animation_wrapper::AnimationWrapper
 };
 
 #[function_component(App)]
@@ -54,19 +55,25 @@ fn app() -> Html
             <GithubImageButton />
             <ScrollPrompt />
             <NameSection name={"connellr023"} reset={*in_view} />
+            <AnimationWrapper reset={*in_view} class={"section-nav"} animation_class={"fade-up-children-6"}>
+                <div>{"test 1"}</div>
+                <div>{"test 2"}</div>
+                <div>{"test 3"}</div>
+                <div>{"test 4"}</div>
+            </AnimationWrapper>
             <div id={"content-wrapper"}>
                 <h3 class={"section"}><Typer reset={!(*in_view)} word={"About"} interval={140} start_index={1} /></h3>
                 <div class={"abstract side-border"}>
                     <span>{"I am a versatile programmer with a strong command of a wide array of tools and languages. My expertise spans both object-oriented and functional programming paradigms, and I excel in testing using a variety of languages and frameworks. Adaptable and passionate, I bring a dynamic approach to solving complex problems in software development."}</span>
                 </div>
-                <div id={"snippets-wrapper"} class={"mono side-border"}>
-                    <Snippet object={"cr023"} property={"languages"} values={vec!["Java", "PHP", "Typescript", "Rust", "C/C++"]} />
+                <AnimationWrapper reset={!(*in_view)} id={"snippets-wrapper"} class={"mono side-border"} animation_class={"fade-up-children-6"}>
+                    <Snippet object={"cr023"} property={"languages"} values={vec!["Java", "PHP", "typescript", "Rust", "C/C++"]} />
                     <Snippet object={"cr023"} property={"frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
-                    <Snippet object={"cr023"} property={"databases"} values={vec!["SQL", "RedisKV", "MongoDB"]} />
+                    <Snippet object={"cr023"} property={"databases"} values={vec!["MySQL", "PostgreSQL", "RedisKV", "MongoDB"]} />
                     <Snippet object={"cr023"} property={"testing"} values={vec!["Jest", "Vitest", "PHPUnit", "JUnit"]} />
                     <Snippet object={"cr023"} property={"tools"} values={vec!["git"]} />
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
-                </div>
+                </AnimationWrapper>
                 <h3 class={"section"}>{"Main Projects"}</h3>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry

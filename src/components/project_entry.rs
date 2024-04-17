@@ -1,5 +1,8 @@
 use yew::prelude::*;
-use crate::components::string_set::StringSet;
+use crate::components::{
+    string_set::StringSet,
+    animation_wrapper::AnimationWrapper
+};
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
@@ -31,7 +34,7 @@ pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack,
                 <span class={"project-name mono"}>{name}</span>
                 <span class={"project-version"}>{version}</span>
             </div>
-            <div class={"project-content"} hidden={*hidden}>
+            <AnimationWrapper reset={!(*hidden)} hidden={*hidden} class={"project-content"} animation_class={"fade-in-children"}>
                 <StringSet values={tech_stack.clone()} />
                 <p class={"project-desc mono side-border"}>{description}</p>
                 {render_image_content(images)}
@@ -45,7 +48,7 @@ pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack,
                         {render_option_url(site_url, "project-url site-url", "no-site-url", "This project is not currently deployed")}
                     </div>
                 </div>
-            </div>
+            </AnimationWrapper>
         </div>
     }
 }

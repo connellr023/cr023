@@ -14,13 +14,14 @@ div.project-entry-item {
     padding: $pad;
     cursor: pointer;
     width: 100%;
+    user-select: none;
 
     .project-name {
       font-size: clamp(35px, 1.1lvw, 42px);
       font-size: 45px;
       border-color: var(--c2);
       transition: margin 0.12s ease-in-out;
-
+    
       &::after {
         content: "::";
         color: var(--c2);

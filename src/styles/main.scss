@@ -5,6 +5,32 @@
 @import "project_entry";
 @import "string_set";
 
+@mixin fade-up-children($duration: 0.5s, $delay-step: 0.1s, $children: 1) {
+  & > * {
+    animation: $duration fade-up ease-in-out forwards;
+
+    @keyframes fade-up {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @for $i from 1 through $children {
+    & > *:nth-child(#{$i}) {
+      transform: translate(0, 0);
+      opacity: 0;
+      animation-delay: ($i - 1) * $delay-step;
+    }
+  }
+}
+
 :root {
   --c1: #030303;
   --c2: #00f16b;
@@ -34,7 +60,6 @@ body {
   font-family: var(--sans-serif-font);
   font-optical-sizing: auto;
   color: var(--c4);
-  animation: 0.3s ease-in-out fade-in;
   scrollbar-width: thin;
   margin: auto;
 }
@@ -110,5 +135,24 @@ div.projects-wrapper {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+.fade-up-children-6 {
+  @include fade-up-children(0.45s, 0.1s, 6);
+}
+
+.fade-in-children {
+  opacity: 0;
+  animation: 0.4s fade-in ease-in-out forwards;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 }

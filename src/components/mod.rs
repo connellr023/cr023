@@ -6,3 +6,4 @@ pub mod scroll_prompt;
 pub mod snippet;
 pub mod project_entry;
 pub mod string_set;
+pub mod animation_wrapper;
