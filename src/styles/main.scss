@@ -4,6 +4,7 @@
 @import "snippet";
 @import "project_entry";
 @import "string_set";
+@import "repo_updates";
 
 @mixin fade-up-children($duration: 0.5s, $delay-step: 0.1s, $children: 1) {
   & > * {
@@ -161,6 +162,16 @@ div.projects-wrapper {
   }
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+}
+
 div.section-nav {
   filter: invert(1);
   position: absolute;
@@ -169,16 +180,9 @@ div.section-nav {
 
   & > a {
     color: var(--c1);
-    cursor: pointer;
     user-select: hover !important;
     display: inline-block;
     padding: 20px;
     font-size: clamp(23px, 1.4lvw, 31px);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-    }
   }
 }

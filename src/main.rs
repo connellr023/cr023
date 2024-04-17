@@ -11,7 +11,8 @@ use crate::components::{
     snippet::Snippet,
     typer::Typer,
     project_entry::ProjectEntry,
-    animation_wrapper::AnimationWrapper
+    animation_wrapper::AnimationWrapper,
+    repo_updates::RepoUpdates
 };
 
 #[function_component(App)]
@@ -70,7 +71,7 @@ fn app() -> Html
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </AnimationWrapper>
                 <h3 id={"main-projects-section"} class={"section"}>{"Main Projects"}</h3>
-                <div class={"abstract side-border"}>{"It is worth noting that the projects below are a select few of very many. A lot of my skills are built off of unfinished as well as private work done for school which were excellent but I do not feel belong on this portfolio."}</div>
+                <div class={"abstract side-border"}>{"It is worth noting that the projects below are a select few of very many. A lot of my skills are built off of unfinished as well as private work done for school which were excellent but I do not believe belong on this portfolio."}</div>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"cr023"}
@@ -114,6 +115,7 @@ fn app() -> Html
                         description={"Gratis is a versatile framework designed to promote the separation of concerns, fostering scalable code practices by encapsulating logic within handlers. Primarily tailored for creating robust and scalable APIs that follow the CRUD lifecycle, the framework follows a REST-like architectural style. It allows form seamless interactions with SQL databases, providing a structured and efficient foundation for building web applications."}
                     />
                 </div>
+                <RepoUpdates />
             </div>
             <div class={"spacer"} />
         </main>

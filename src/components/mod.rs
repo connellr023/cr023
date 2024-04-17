@@ -7,3 +7,4 @@ pub mod snippet;
 pub mod project_entry;
 pub mod string_set;
 pub mod animation_wrapper;
+pub mod repo_updates;

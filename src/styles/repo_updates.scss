@@ -1,0 +1,43 @@
+div.repo-updates-wrapper {
+  $spacing: 15px;
+
+	margin-top: 60px;
+  width: 100%;
+  display: inline-block;
+  font-size: clamp(19px, 1.4lvw, 22px);
+  text-align: center;
+
+  .dev-credit {
+    &::before {
+      color: var(--c2);
+      content: "©";
+      padding-right: 10px;
+      font-family: var(--sans-serif-font);
+    }
+  }
+
+  .dash {
+    color: var(--c2);
+  }
+
+  .date {
+    padding-left: $spacing;
+  }
+
+  .repo-license, .last-commit, .commit-not-loaded {
+    padding: $spacing;
+    color: var(--c3);
+
+    &::before, &::after {
+      color: var(--c5);
+    }
+
+    &::before {
+      content: "[";
+    }
+
+    &::after {
+      content: "]";
+    }
+  }
+}
