@@ -1,5 +1,8 @@
 use yew::prelude::*;
-use crate::components::{typer::Typer, blinker::Blinker};
+use crate::components::{
+    typer::Typer,
+    blinker::Blinker
+};
 
 #[derive(Properties, PartialEq)]
 pub struct NameSectionProps

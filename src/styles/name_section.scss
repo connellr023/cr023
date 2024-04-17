@@ -36,9 +36,10 @@
   position: initial;
   display: flex;
   width: 90lvw;
+  z-index: -1;
 
   .title {
-    margin-top: max(55px, 15lvh);
+    margin-top: max(65px, 30lvh);
 
     .prefix {
       font-size: inherit;

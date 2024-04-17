@@ -43,6 +43,10 @@
   --fade-time: 0.2s;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 main#app-wrapper {
   overflow-y: visible;
   overflow-x: hidden;
@@ -153,6 +157,28 @@ div.projects-wrapper {
 
     100% {
       opacity: 1;
+    }
+  }
+}
+
+div.section-nav {
+  filter: invert(1);
+  position: absolute;
+  top: 2lvh;
+  text-align: center;
+
+  & > a {
+    color: var(--c1);
+    cursor: pointer;
+    user-select: hover !important;
+    display: inline-block;
+    padding: 20px;
+    font-size: clamp(23px, 1.4lvw, 31px);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
     }
   }
 }

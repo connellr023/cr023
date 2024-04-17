@@ -54,18 +54,13 @@ fn app() -> Html
         <main id={"app-wrapper"} class={format!("flex-wrapper {}", if *in_view { "in-view" } else { "" })}>
             <GithubImageButton />
             <ScrollPrompt />
+            <AnimationWrapper reset={*in_view} class={"section-nav mono"} animation_class={"fade-up-children-6"}>
+                <a href={"#about-section"}>{"About"}</a>
+                <a href={"#main-projects-section"}>{"Main Projects"}</a>            </AnimationWrapper>
             <NameSection name={"connellr023"} reset={*in_view} />
-            <AnimationWrapper reset={*in_view} class={"section-nav"} animation_class={"fade-up-children-6"}>
-                <div>{"test 1"}</div>
-                <div>{"test 2"}</div>
-                <div>{"test 3"}</div>
-                <div>{"test 4"}</div>
-            </AnimationWrapper>
             <div id={"content-wrapper"}>
-                <h3 class={"section"}><Typer reset={!(*in_view)} word={"About"} interval={140} start_index={1} /></h3>
-                <div class={"abstract side-border"}>
-                    <span>{"I am a versatile programmer with a strong command of a wide array of tools and languages. My expertise spans both object-oriented and functional programming paradigms, and I excel in testing using a variety of languages and frameworks. Adaptable and passionate, I bring a dynamic approach to solving complex problems in software development."}</span>
-                </div>
+                <h3 id={"about-section"} class={"section"}><Typer reset={!(*in_view)} word={"About"} interval={140} start_index={1} /></h3>
+                <div class={"abstract side-border"}>{"I am a versatile programmer with a strong command of a wide array of tools and languages. My expertise spans both object-oriented and functional programming paradigms, and I excel in testing using a variety of languages and frameworks as well as have experience working in teams with version control. Adaptable and passionate, I bring a dynamic approach to solving complex problems in software development."}</div>
                 <AnimationWrapper reset={!(*in_view)} id={"snippets-wrapper"} class={"mono side-border"} animation_class={"fade-up-children-6"}>
                     <Snippet object={"cr023"} property={"languages"} values={vec!["Java", "PHP", "typescript", "Rust", "C/C++"]} />
                     <Snippet object={"cr023"} property={"frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
@@ -74,7 +69,8 @@ fn app() -> Html
                     <Snippet object={"cr023"} property={"tools"} values={vec!["git"]} />
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </AnimationWrapper>
-                <h3 class={"section"}>{"Main Projects"}</h3>
+                <h3 id={"main-projects-section"} class={"section"}>{"Main Projects"}</h3>
+                <div class={"abstract side-border"}>{"It is worth noting that the projects below are a select few of very many. A lot of my skills are built off of unfinished as well as private work done for school which were excellent but I do not feel belong on this portfolio."}</div>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"cr023"}
@@ -86,7 +82,7 @@ fn app() -> Html
                         name={"Chatter"}
                         version={"v1.0.3"}
                         images={vec![("Chatter Home Page Screen", "assets/chatter/home.PNG"), ("Chatter Empty Chat Screen", "assets/chatter/empty_chat.PNG"), ("Chatter Chat Screen", "assets/chatter/chat.PNG")]}
-                        tech_stack={vec!["Vue.js", "socket.io", "express.js", "typescript"]}
+                        tech_stack={vec!["Vue.js", "socket.io", "express.js", "Jest", "Vitest", "typescript"]}
                         repo_url={"https://github.com/connellr023/Chatter"}
                         site_url={"https://chatter-lqqb.onrender.com"}
                         description={"Chatter is a web app centered around a global chat system. It features isolated chat rooms that users can connect to without requiring an account. Currently, all chat rooms are global, however there is infrastructure in place within the server the API to allow for private chat rooms in the future."}
@@ -112,7 +108,7 @@ fn app() -> Html
                     <ProjectEntry
                         name={"gratis"}
                         version={"v1.0.1"}
-                        tech_stack={vec!["PHP 8.3"]}
+                        tech_stack={vec!["PHP 8.3", "PHPUnit"]}
                         repo_url={"https://github.com/connellr023/gratis"}
                         site_url={"https://packagist.org/packages/connell/gratis"}
                         description={"Gratis is a versatile framework designed to promote the separation of concerns, fostering scalable code practices by encapsulating logic within handlers. Primarily tailored for creating robust and scalable APIs that follow the CRUD lifecycle, the framework follows a REST-like architectural style. It allows form seamless interactions with SQL databases, providing a structured and efficient foundation for building web applications."}
