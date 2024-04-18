@@ -96,6 +96,7 @@ div.project-entry-item {
     height: inherit;
 
     img.current-image {
+      cursor: pointer;
       border-radius: 10px;
       user-select: none;
       object-fit: cover;
