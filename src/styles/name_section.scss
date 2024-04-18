@@ -1,9 +1,9 @@
 #name-section-wrapper {
   filter: invert(1);
-  font-size: 17px;
   height: min-content;
-  text-align: left;
-  top: 0;
+  top: 21px;
+  left: 15px;
+  position: fixed;
   z-index: 5;
 
   .title {
@@ -17,7 +17,7 @@
       font-weight: bold;
       margin-right: 25px;
       padding: 6px 13px;
-      font-size: clamp(27px, 3lvw, 55px);
+      font-size: clamp(30px, 3lvw, 57px);
     }
 
     .name-wrapper {
@@ -29,11 +29,11 @@
 
 .in-view #name-section-wrapper {
   background: none;
-  font-size: clamp(23px, 3vw, 36px);
+  font-size: clamp(50px, 3vw, 65px);
   filter: invert(0);
-  position: initial;
+  position: absolute;
+  left: 5%;
   display: flex;
-  width: 90lvw;
   z-index: -1;
 
   .title {
