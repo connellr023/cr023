@@ -30,27 +30,35 @@ pub fn repo_updates() -> Html
 	let commit = use_state(|| None);
 	let commit_clone = commit.clone();
 
-	wasm_bindgen_futures::spawn_local(async move
+	use_effect(||
 	{
-		let endpoint = format!("https://api.github.com/repos/connellr023/{}/commits/main", "gratis");
-		
-		match Request::get(&endpoint).send().await
+		if !(*commit).is_some()
 		{
-			Ok(response) => {
-				match response.json().await
+			wasm_bindgen_futures::spawn_local(async move
+			{
+				let endpoint = format!("https://api.github.com/repos/connellr023/{}/commits/main", "gratis");
+				
+				match Request::get(&endpoint).send().await
 				{
-					Ok(fetched_commit) => {
-						commit.set(fetched_commit);
+					Ok(response) => {
+						match response.json().await
+						{
+							Ok(fetched_commit) => {
+								commit.set(fetched_commit);
+							},
+							Err(_) => {
+								log("Failed to parse API response");
+							}
+						}
 					},
 					Err(_) => {
-						log("Failed to parse API response");
+						log("Failed to reach API endpoint");
 					}
 				}
-			},
-			Err(_) => {
-				log("Failed to reach API endpoint");
-			}
+			});
 		}
+
+		|| {}
 	});
 
 	html!

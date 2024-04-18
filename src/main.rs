@@ -12,7 +12,7 @@ use crate::components::{
     typer::Typer,
     project_entry::ProjectEntry,
     animation_wrapper::AnimationWrapper,
-    repo_updates::RepoUpdates
+    repo_updates::RepoUpdates,
 };
 
 #[function_component(App)]
