@@ -1,6 +1,7 @@
 use yew::prelude::*;
 use reqwasm::http::Request;
 use serde::{Deserialize, Serialize};
+use crate::bindings::log;
 
 #[derive(Serialize, Deserialize)]
 struct Committer
@@ -32,15 +33,24 @@ pub fn repo_updates() -> Html
 	wasm_bindgen_futures::spawn_local(async move
 	{
 		let endpoint = format!("https://api.github.com/repos/connellr023/{}/commits/main", "gratis");
-		let fetched_commit: CommitResponse = Request::get(&endpoint)
-			.send()
-			.await
-			.unwrap()
-			.json()
-			.await
-			.unwrap();
-
-		commit.set(Some(fetched_commit));
+		
+		match Request::get(&endpoint).send().await
+		{
+			Ok(response) => {
+				match response.json().await
+				{
+					Ok(fetched_commit) => {
+						commit.set(fetched_commit);
+					},
+					Err(_) => {
+						log("Failed to parse API response");
+					}
+				}
+			},
+			Err(_) => {
+				log("Failed to reach API endpoint");
+			}
+		}
 	});
 
 	html!
@@ -49,12 +59,12 @@ pub fn repo_updates() -> Html
 			<span class={"dev-credit"}>{"Connell Reffo 2024"}</span>
 			<a class={"repo-license"} target={"_blank"} href={"https://opensource.org/license/mit"}>{"MIT"}</a>
 			<span class={"dash"}>{"::"}</span>
-			{render_repo_commit(commit_clone.as_ref())}
+			{render_repo_commit(&commit_clone)}
 		</div>
 	}
 }
 
-fn render_repo_commit(commit: Option<&CommitResponse>) -> Html
+fn render_repo_commit(commit: &Option<CommitResponse>) -> Html
 {
 	match commit
 	{

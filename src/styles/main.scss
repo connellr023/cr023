@@ -80,15 +80,10 @@ body {
   justify-content: center;
 }
 
-.spacer {
-  display: block;
-  height: 660lvh;
-}
-
 #content-wrapper {
+  //margin-bottom: 20px;
+  margin-top: 500px;
   opacity: 1;
-  position: absolute;
-  top: 500px;
   width: 75%;
   transition: opacity var(--fade-time) ease-in-out;
 }
@@ -104,6 +99,7 @@ body {
 }
 
 .abstract {
+  display: block;
   color: var(--c2);
   border-color: var(--c2);
   font-size: clamp(18px, 2lvw, 21px);

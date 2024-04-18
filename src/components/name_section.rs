@@ -17,13 +17,13 @@ pub fn name_section(NameSectionProps { name, reset }: &NameSectionProps) -> Html
     html!
     {
         <div id="name-section-wrapper">
-            <h1 class={"title mono"}>
+            <div class={"title mono"}>
                 <span class={"prefix"}>{"~$"}</span>
                 <div class={"name-wrapper"}>
                     <Typer reset={*reset} class={"name"} word={*name} interval={140} />
                     <Blinker symbol={"_"} interval={450} />
                 </div>
-            </h1>
+            </div>
         </div>
     }
 }

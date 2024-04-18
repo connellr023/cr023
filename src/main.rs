@@ -57,7 +57,8 @@ fn app() -> Html
             <ScrollPrompt />
             <AnimationWrapper reset={*in_view} class={"section-nav mono"} animation_class={"fade-up-children-6"}>
                 <a href={"#about-section"}>{"About"}</a>
-                <a href={"#main-projects-section"}>{"Main Projects"}</a>            </AnimationWrapper>
+                <a href={"#main-projects-section"}>{"Main Projects"}</a>
+            </AnimationWrapper>
             <NameSection name={"connellr023"} reset={*in_view} />
             <div id={"content-wrapper"}>
                 <h3 id={"about-section"} class={"section"}><Typer reset={!(*in_view)} word={"About"} interval={140} start_index={1} /></h3>
@@ -117,7 +118,6 @@ fn app() -> Html
                 </div>
                 <RepoUpdates />
             </div>
-            <div class={"spacer"} />
         </main>
     }
 }
