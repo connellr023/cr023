@@ -4,6 +4,9 @@ use crate::components::{
     animation_wrapper::AnimationWrapper
 };
 
+type AltSrcTupleVec = Vec<(&'static str, &'static str)>;
+type ImgClickCallback = Callback<AltSrcTupleVec>;
+
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
 {
@@ -11,13 +14,23 @@ pub struct ProjectEntryProps
     pub description: &'static str,
     pub version: &'static str,
     pub tech_stack: Vec<&'static str>,
-    pub images: Option<Vec<(&'static str, &'static str)>>,
+    pub images: Option<AltSrcTupleVec>,
     pub repo_url: Option<&'static str>,
-    pub site_url: Option<&'static str>
+    pub site_url: Option<&'static str>,
+    pub on_img_click: Option<ImgClickCallback>
 }
 
 #[function_component(ProjectEntry)]
-pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack, images, repo_url, site_url }: &ProjectEntryProps) -> Html
+pub fn project_entry(ProjectEntryProps {
+    name,
+    description,
+    version,
+    tech_stack,
+    images,
+    repo_url,
+    site_url,
+    on_img_click 
+}: &ProjectEntryProps) -> Html
 {
     let hidden = use_state(|| true);
 
@@ -37,7 +50,7 @@ pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack,
             <AnimationWrapper reset={!(*hidden)} hidden={*hidden} class={"project-content"} animation_class={"fade-in-children"}>
                 <StringSet values={tech_stack.clone()} />
                 <p class={"project-desc mono side-border"}>{description}</p>
-                {render_image_content(images)}
+                {render_image_content(images, on_img_click)}
                 <div class={"project-links mono"}>
                     <div class={"link-entry"}>
                         <span class={"link-title"}>{"Project Repository"}</span>
@@ -53,7 +66,7 @@ pub fn project_entry(ProjectEntryProps { name, description, version, tech_stack,
     }
 }
 
-fn render_image_content(images: &Option<Vec<(&'static str, &'static str)>>) -> Html
+fn render_image_content(images: &Option<AltSrcTupleVec>, callback: &Option<ImgClickCallback>) -> Html
 {
     match images
     {
@@ -78,12 +91,26 @@ fn render_image_content(images: &Option<Vec<(&'static str, &'static str)>>) -> H
                 }
             });
 
+            let images_clone = images.clone();
+            let handle_img_click = match callback.clone()
+            {
+                Some(callback) => {
+                    Callback::once(move |_|
+                    {
+                        callback.emit(images_clone);
+                    })
+                },
+                None => {
+                    Callback::from(|_| {})
+                }
+            };
+
             html!
             {
                 <div class={"image-wrapper"}>
                     <div class={"image-content"}>
                         <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
-                        <img class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
+                        <img onclick={handle_img_click} class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
                         <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
                     </div>
                     {render_carousel_index_indicator(*current_index, images_len)}
