@@ -5,6 +5,7 @@
 @import "project_entry";
 @import "string_set";
 @import "repo_updates";
+@import "image_modal";
 
 @mixin fade-up-children($duration: 0.5s, $delay-step: 0.1s, $children: 1) {
   & > * {

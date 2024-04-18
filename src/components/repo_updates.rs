@@ -24,10 +24,12 @@ struct CommitResponse
     pub html_url: String
 }
 
+const API_ENDPOINT: &str = "https://api.github.com/repos/connellr023/Chatter/commits/main";
+
 #[function_component(RepoUpdates)]
 pub fn repo_updates() -> Html
 {
-    let commit = use_state(|| None);
+    let commit = use_state(|| None as Option<CommitResponse>);
     let commit_clone = commit.clone();
 
     use_effect(||
@@ -35,10 +37,8 @@ pub fn repo_updates() -> Html
         if !(*commit).is_some()
         {
             wasm_bindgen_futures::spawn_local(async move
-            {
-                let endpoint = format!("https://api.github.com/repos/connellr023/{}/commits/main", "gratis");
-                
-                match Request::get(&endpoint).send().await
+            {                
+                match Request::get(&API_ENDPOINT).send().await
                 {
                     Ok(response) => {
                         match response.json().await

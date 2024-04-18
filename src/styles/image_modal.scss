@@ -1,0 +1,22 @@
+div.img-modal-wrapper {
+  background-color: rgba(0, 0, 0, 0.85);
+  width: 100lvw;
+  height: 100lvh;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  & > img {
+    border-radius: 10px;
+    width: 70%;
+    min-width: 400px;
+  }
+
+  & > div {
+    margin-top: 3lvh;
+    font-size: clamp(16px, 1.5lvw, 25px);
+  }
+}

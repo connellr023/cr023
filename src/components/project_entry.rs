@@ -5,7 +5,7 @@ use crate::components::{
     AltSrcTuple
 };
 
-type ImgClickCallback = Callback<Vec<AltSrcTuple>>;
+type ImgClickCallback = Callback<AltSrcTuple>;
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
@@ -91,13 +91,13 @@ fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<Img
                 }
             });
 
-            let images_clone = images.clone();
+            let current_image = images[*current_index].clone();
             let handle_img_click = match callback.clone()
             {
                 Some(callback) => {
                     Callback::once(move |_|
                     {
-                        callback.emit(images_clone);
+                        callback.emit(current_image);
                     })
                 },
                 None => {
