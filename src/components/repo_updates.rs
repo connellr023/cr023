@@ -2,7 +2,7 @@ use yew::prelude::*;
 use reqwasm::http::Request;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize)]
 struct Committer
 {
 	pub name: String,
@@ -10,13 +10,13 @@ struct Committer
 	pub date: String
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize)]
 struct Commit
 {
 	pub committer: Committer
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize)]
 struct CommitResponse
 {
 	pub commit: Commit,

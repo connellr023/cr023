@@ -82,7 +82,7 @@ fn app() -> Html
                     <ProjectEntry
                         name={"Chatter"}
                         version={"v1.0.3"}
-                        images={vec![("Chatter Home Page Screen", "assets/chatter/home.PNG"), ("Chatter Empty Chat Screen", "assets/chatter/empty_chat.PNG"), ("Chatter Chat Screen", "assets/chatter/chat.PNG")]}
+                        images={vec![("Chatter Home Page Screen", "assets/chatter/1.png"), ("Chatter Empty Chat Screen", "assets/chatter/2.png"), ("Chatter Chat Screen", "assets/chatter/3.png"), ("Chatter Error Screen", "assets/chatter/4.png")]}
                         tech_stack={vec!["Vue.js", "socket.io", "express.js", "Jest", "Vitest", "typescript"]}
                         repo_url={"https://github.com/connellr023/Chatter"}
                         site_url={"https://chatter-lqqb.onrender.com"}
@@ -91,7 +91,7 @@ fn app() -> Html
                     <ProjectEntry
                         name={"Atla"}
                         version={"v1.0.0"}
-                        images={vec![("Atla Welcome Screen", "assets/atla/1.PNG"), ("Atla Blank Map", "assets/atla/2.PNG"), ("Atla Add Event Map", "assets/atla/3.PNG"), ("Atla Open Event Screen", "assets/atla/4.PNG"), ("Atla View Event Screen", "assets/atla/5.PNG")]}
+                        images={vec![("Atla Welcome Screen", "assets/atla/1.png"), ("Atla Blank Map", "assets/atla/2.png"), ("Atla Add Event Map", "assets/atla/3.png"), ("Atla Open Event Screen", "assets/atla/4.png"), ("Atla View Event Screen", "assets/atla/5.png")]}
                         tech_stack={vec!["Next.js", "Vercel", "redis", "typescript"]}
                         repo_url={"https://github.com/connellr023/Atla"}
                         site_url={"https://atla-ch2024.vercel.app"}

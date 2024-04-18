@@ -53,7 +53,7 @@ pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperPro
             set_timeout(&timeout_closure, interval_clone);
 
             // Cleanup function if timeout is started
-            (|| timeout_closure.forget())()
+            timeout_closure.forget()
         }
 
         // Cleanup function if timer is not started
