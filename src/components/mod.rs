@@ -1,4 +1,5 @@
 pub type AltSrcTuple = (&'static str, &'static str);
+pub type ImgClickCallback = yew::prelude::Callback<Option<AltSrcTuple>>;
 
 pub mod name_section;
 pub mod typer;

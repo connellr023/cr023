@@ -1,3 +1,8 @@
+// Portfolio website
+// Author: Connell Reffo
+// Developed: 2024
+#![crate_name = "cr023"]
+
 mod components;
 mod bindings;
 
@@ -22,12 +27,13 @@ fn app() -> Html
 {
     let window: Window = window().unwrap();
 
-    let current_image = use_state(|| ("test", "assets/atla/1.png") as AltSrcTuple);
+    let current_image = use_state(|| None as Option<AltSrcTuple>);
     let current_image_clone = current_image.clone();
 
     let in_view = use_state(|| true);
     let in_view_clone = in_view.clone();
 
+    // Use effect for handling scroll effect event
     use_effect(move ||
     {
         let window_clone: Window = window.clone();
@@ -56,7 +62,8 @@ fn app() -> Html
         move || { window.remove_event_listener_with_callback("scroll", on_scroll_callback.as_ref().unchecked_ref()).unwrap(); }
     });
 
-    let set_image_callback = Callback::from(move |image_src: AltSrcTuple|
+    // Callback for updating the current image to be displayed by the image modal
+    let set_image_callback = Callback::from(move |image_src: Option<AltSrcTuple>|
     {
         current_image_clone.set(image_src);
     });
@@ -66,7 +73,7 @@ fn app() -> Html
         <main id={"app-wrapper"} class={format!("flex-wrapper {}", if *in_view { "in-view" } else { "" })}>
             <GithubImageButton />
             <ScrollPrompt />
-            <ImageModal current_image={*current_image} />
+            <ImageModal current_image={*current_image} update_current_image={set_image_callback.clone()} />
             <AnimationWrapper reset={*in_view} class={"section-nav mono"} animation_class={"fade-up-children-6"}>
                 <a href={"#about-section"}>{"About"}</a>
                 <a href={"#main-projects-section"}>{"Main Projects"}</a>
@@ -100,7 +107,7 @@ fn app() -> Html
                         repo_url={"https://github.com/connellr023/Chatter"}
                         site_url={"https://chatter-lqqb.onrender.com"}
                         description={"Chatter is a web app centered around a global chat system. It features isolated chat rooms that users can connect to without requiring an account. Currently, all chat rooms are global, however there is infrastructure in place within the server the API to allow for private chat rooms in the future."}
-                        on_img_click={set_image_callback.clone()}
+                        update_current_image={set_image_callback.clone()}
                     />
                     <ProjectEntry
                         name={"Atla"}
@@ -110,7 +117,7 @@ fn app() -> Html
                         repo_url={"https://github.com/connellr023/Atla"}
                         site_url={"https://atla-ch2024.vercel.app"}
                         description={"Your Hub for Volunteering Events and more, Alta (made for Calgary Hacks 2024) aims to bring the Calgarian community together by providing a centralized platform to post and view volunteering events."}
-                        on_img_click={set_image_callback.clone()}
+                        update_current_image={set_image_callback.clone()}
                     />
                     <ProjectEntry
                         name={"Crumble"}
@@ -120,7 +127,7 @@ fn app() -> Html
                         repo_url={"https://github.com/connellr023/Crumble"}
                         site_url={"https://crumble-b4fq.onrender.com"}
                         description={"A top-down view web game where you must battle another opponent with a rocket launcher on a crumbling map."}
-                        on_img_click={set_image_callback.clone()}
+                        update_current_image={set_image_callback.clone()}
                     />
                     <ProjectEntry
                         name={"gratis"}

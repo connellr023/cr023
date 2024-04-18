@@ -16,6 +16,7 @@ div.img-modal-wrapper {
   }
 
   & > div {
+    color: var(--c5);
     margin-top: 3lvh;
     font-size: clamp(16px, 1.5lvw, 25px);
   }

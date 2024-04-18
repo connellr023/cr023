@@ -37,6 +37,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "cr023"
+version = "1.0.0"
+dependencies = [
+ "reqwasm",
+ "serde",
+ "serde_json",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+ "yew",
+]
+
+[[package]]
 name = "futures-channel"
 version = "0.3.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -253,19 +266,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.50",
-]
-
-[[package]]
-name = "portfolio"
-version = "0.1.0"
-dependencies = [
- "reqwasm",
- "serde",
- "serde_json",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "web-sys",
- "yew",
 ]
 
 [[package]]

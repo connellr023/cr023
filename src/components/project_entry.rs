@@ -2,10 +2,9 @@ use yew::prelude::*;
 use crate::components::{
     string_set::StringSet,
     animation_wrapper::AnimationWrapper,
-    AltSrcTuple
+    AltSrcTuple,
+    ImgClickCallback
 };
-
-type ImgClickCallback = Callback<AltSrcTuple>;
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
@@ -17,7 +16,7 @@ pub struct ProjectEntryProps
     pub images: Option<Vec<AltSrcTuple>>,
     pub repo_url: Option<&'static str>,
     pub site_url: Option<&'static str>,
-    pub on_img_click: Option<ImgClickCallback>
+    pub update_current_image: Option<ImgClickCallback>
 }
 
 #[function_component(ProjectEntry)]
@@ -29,7 +28,7 @@ pub fn project_entry(ProjectEntryProps {
     images,
     repo_url,
     site_url,
-    on_img_click 
+    update_current_image 
 }: &ProjectEntryProps) -> Html
 {
     let hidden = use_state(|| true);
@@ -50,7 +49,7 @@ pub fn project_entry(ProjectEntryProps {
             <AnimationWrapper reset={!(*hidden)} hidden={*hidden} class={"project-content"} animation_class={"fade-in-children"}>
                 <StringSet values={tech_stack.clone()} />
                 <p class={"project-desc mono side-border"}>{description}</p>
-                {render_image_content(images, on_img_click)}
+                {render_image_content(images, update_current_image)}
                 <div class={"project-links mono"}>
                     <div class={"link-entry"}>
                         <span class={"link-title"}>{"Project Repository"}</span>
@@ -97,7 +96,7 @@ fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<Img
                 Some(callback) => {
                     Callback::once(move |_|
                     {
-                        callback.emit(current_image);
+                        callback.emit(Some(current_image));
                     })
                 },
                 None => {
