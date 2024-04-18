@@ -49,8 +49,6 @@ html {
 }
 
 main#app-wrapper {
-  overflow-y: visible;
-  overflow-x: hidden;
   transition: background-color var(--fade-time) ease-in-out;
   background-color: var(--c1);
   width: 100lvw;
@@ -62,6 +60,8 @@ main#app-wrapper {
 }
 
 body {
+  overflow-y: visible;
+  overflow-x: hidden;
   font-family: var(--sans-serif-font);
   font-optical-sizing: auto;
   color: var(--c4);
