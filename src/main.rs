@@ -6,7 +6,7 @@ use web_sys::{window, Window, Element};
 use wasm_bindgen::{closure::Closure, JsCast, UnwrapThrowExt};
 use crate::components::{
     name_section::NameSection,
-    gh_img_btn::GithubImageButton,
+    github_image_button::GithubImageButton,
     scroll_prompt::ScrollPrompt,
     snippet::Snippet,
     typer::Typer,

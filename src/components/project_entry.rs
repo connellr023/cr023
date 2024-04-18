@@ -1,11 +1,11 @@
 use yew::prelude::*;
 use crate::components::{
     string_set::StringSet,
-    animation_wrapper::AnimationWrapper
+    animation_wrapper::AnimationWrapper,
+    AltSrcTuple
 };
 
-type AltSrcTupleVec = Vec<(&'static str, &'static str)>;
-type ImgClickCallback = Callback<AltSrcTupleVec>;
+type ImgClickCallback = Callback<Vec<AltSrcTuple>>;
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectEntryProps
@@ -14,7 +14,7 @@ pub struct ProjectEntryProps
     pub description: &'static str,
     pub version: &'static str,
     pub tech_stack: Vec<&'static str>,
-    pub images: Option<AltSrcTupleVec>,
+    pub images: Option<Vec<AltSrcTuple>>,
     pub repo_url: Option<&'static str>,
     pub site_url: Option<&'static str>,
     pub on_img_click: Option<ImgClickCallback>
@@ -66,7 +66,7 @@ pub fn project_entry(ProjectEntryProps {
     }
 }
 
-fn render_image_content(images: &Option<AltSrcTupleVec>, callback: &Option<ImgClickCallback>) -> Html
+fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<ImgClickCallback>) -> Html
 {
     match images
     {
