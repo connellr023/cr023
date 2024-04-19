@@ -8,10 +8,33 @@
 <br />
 
 #### Overview
-This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the <a target="_blank" href="https://yew.rs/">Yew</a> framework which is very similar to *React* for creating front end web services.
+This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the <a href="https://yew.rs/">Yew</a> framework which is very similar to *React* for creating front end web services.
+
+<br />
 
 #### Notes
 I am aware this could have been easily created with traditional *React* or even *JQuery* to be honest. However, as mentioned above, this project is mainly for learning Rust and it was by no means practical in comparison. :cry:
+
+<br />
+
+#### Development Environment
+The setup below follows *Yew* setup instrucions <a href="https://yew.rs/docs/getting-started/introduction">here</a>.
+
+Add WebAssembly as a compilation target:
+```bash
+rustup target add wasm32-unknown-unknown
+```
+
+Install trunk which is used for bundling WASM appliactions:
+```bash
+cargo install --locked trunk
+```
+
+In the root directory, run:
+```bash
+cargo serve
+```
+to serve the WASM application to *127.0.0.1:8001*
 
 <br />
 <br />
