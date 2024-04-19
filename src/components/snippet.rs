@@ -15,7 +15,7 @@ pub fn snippet(SnippetProps { object, property, values }: &SnippetProps) -> Html
     html!
     {
         <div class={"snippet-wrapper mono"}>
-            <div class={"property"}>{format!("{}->{}", *object, *property)}</div>
+            <div class={"property"}>{*object}<span>{"->"}</span>{*property}</div>
             <StringSet values={values.clone()} />
         </div>
     }

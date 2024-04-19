@@ -26,8 +26,9 @@ pub fn image_modal(ImageModalProps { current_image, update_current_image }: &Ima
             html!
             {
                 <div class={"img-modal-wrapper"} onclick={hide}>
+                    <div class={"img-title mono"}>{(*current_image).0}</div>
                     <img alt={(*current_image).0} src={(*current_image).1} />
-                    <div class={"mono"}>{"< Click anywhere to exit >"}</div>
+                    <div class={"prompt mono"}>{"< Click anywhere to exit >"}</div>
                 </div>
             }
         },

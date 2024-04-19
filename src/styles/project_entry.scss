@@ -10,17 +10,19 @@ div.project-entry-item {
 
     display: inline-block;
     margin-bottom: 15px;
-    transition: background 0.12s ease-in-out;
+    transition: background 0.12s ease-in-out, border-color 0.12s ease-in-out;
     padding: $pad;
     cursor: pointer;
     width: calc(100% - 10px);
     user-select: none;
+    border: 2px solid transparent;
+    border-radius: 7px;
 
     .project-name {
       font-size: clamp(35px, 1.1lvw, 42px);
       font-size: 45px;
       border-color: var(--c2);
-      transition: margin 0.12s ease-in-out;
+      transition: all 0.12s ease-in-out;
     
       &::after {
         content: "::";
@@ -40,7 +42,8 @@ div.project-entry-item {
     }
 
     &:hover {
-      background-color: var(--c6);
+      background-color: rgba(255, 255, 255, 0.025);
+      border-color: rgba(255, 255, 255, 0.1);
 
       .project-name {
         margin-left: 8px;
