@@ -76,6 +76,7 @@ fn app() -> Html
             <ImageModal current_image={*current_image} update_current_image={set_image_callback.clone()} />
             <AnimationWrapper reset={*in_view} class={"section-nav mono"} animation_class={"fade-up-children-6"}>
                 <a href={"#about-section"}>{"About"}</a>
+                <a href={"#education-section"}>{"Education"}</a>
                 <a href={"#main-projects-section"}>{"Main Projects"}</a>
             </AnimationWrapper>
             <NameSection name={"connellr023"} reset={*in_view} />
@@ -90,6 +91,8 @@ fn app() -> Html
                     <Snippet object={"cr023"} property={"tools"} values={vec!["git"]} />
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </AnimationWrapper>
+                <h3 id={"education-section"} class={"section"}><Typer reset={!(*in_view)} word={"Education"} interval={105} start_index={1} /></h3>
+                <div style={"margin-bottom: 175px"} class={"abstract side-border"}>{"While a lot of my current skills are self taught, I am currently a student at the University of Calgary where I have gained valuable experience working with others and made important connections."}</div>
                 <h3 id={"main-projects-section"} class={"section"}><Typer reset={!(*in_view)} word={"Main Projects"} interval={80} start_index={1} /></h3>
                 <div class={"abstract side-border"}>{"It is worth noting that the projects below are a select few of very many. A lot of my skills are built off of unfinished as well as private work done for school which were excellent but I do not believe belong on this portfolio."}</div>
                 <div class={"projects-wrapper"}>
