@@ -42,6 +42,14 @@ trunk serve
 to serve the **WASM** application to `http://localhost:8080`.
 
 <br />
+
+#### Building for Production
+The website is bundled for production with the following command:
+```bash
+trunk build --release --public-url /cr023/
+```
+
+<br />
 <br />
 
 <div align="center">

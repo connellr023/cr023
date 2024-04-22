@@ -94,7 +94,7 @@ fn app() -> Html
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"cr023"}
-                        version={"v1.0.0"}
+                        version={"U1"}
                         tech_stack={vec!["Yew.rs", "Rust", "WebAssembly"]}
                         description={"The website you are currently on! A portfolio to showcase my work. This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the Yew framework which is very similar to React for creating front end web services."}
                         repo_url={"https://github.com/connellr023/cr023"}
