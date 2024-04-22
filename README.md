@@ -8,7 +8,12 @@
 <br />
 
 #### Overview
-This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the <b><a href="https://yew.rs/">Yew</a></b> framework which is very similar to **React** for creating front end web services.
+This project specifically is different as I used it as an introduction to the **Rust** programming language with its web assembly compilation feature. This was created utilizing the <b><a href="https://yew.rs/">Yew</a></b> framework which is very similar to **React** for creating front end web services.
+
+<br />
+
+#### Deployment
+My portfolio website is deployed on GitHub Pages <a href="https://connellr023.github.io/cr023/">here</a>.
 
 <br />
 

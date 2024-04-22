@@ -34,13 +34,11 @@ pub fn project_entry(ProjectEntryProps {
     let hidden = use_state(|| true);
 
     let hidden_clone = hidden.clone();
-    let toggle_hidden_content = Callback::from(move |_|
-    {
+    let toggle_hidden_content = Callback::from(move |_| {
         hidden_clone.set(!(*hidden_clone));
     });
 
-    html!
-    {
+    html! {
     	<div class={"project-entry-item"}>
             <div onclick={toggle_hidden_content} class="project-info-wrapper">
                 <span class={"project-name mono"}>{name}</span>
@@ -67,21 +65,18 @@ pub fn project_entry(ProjectEntryProps {
 
 fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<ImgClickCallback>) -> Html
 {
-    match images
-    {
+    match images {
         Some(images) => {
             let current_index = use_state(|| 0);
             let images_len = images.len().clone();
 
             let current_index_clone = current_index.clone();
-            let next_image = Callback::from(move |_|
-            {
+            let next_image = Callback::from(move |_| {
                 current_index_clone.set((*current_index_clone + 1) % images_len);
             });
 
             let current_index_clone = current_index.clone();
-            let prev_image = Callback::from(move |_|
-            {
+            let prev_image = Callback::from(move |_| {
                 if *current_index_clone == 0 {
                     current_index_clone.set(images_len - 1);
                 }
@@ -91,8 +86,7 @@ fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<Img
             });
 
             let current_image = images[*current_index].clone();
-            let handle_img_click = match callback.clone()
-            {
+            let handle_img_click = match callback.clone() {
                 Some(callback) => {
                     Callback::once(move |_|
                     {
@@ -104,8 +98,7 @@ fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<Img
                 }
             };
 
-            html!
-            {
+            html! {
                 <div class={"image-wrapper"}>
                     <div class={"image-content"}>
                         <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
@@ -124,8 +117,7 @@ fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<Img
 
 fn render_option_url(url: &Option<&'static str>, exists_class: &'static str, not_exists_class: &'static str, not_exists_msg: &'static str) -> Html
 {
-    match *url
-    {
+    match *url {
     	Some(url_val) => {
     	   html! { <a class={exists_class} href={url_val} target={"_blank"}>{url_val}</a> }
     	},
@@ -137,8 +129,7 @@ fn render_option_url(url: &Option<&'static str>, exists_class: &'static str, not
 
 fn render_carousel_index_indicator(current_index: usize, image_count: usize) -> Html
 {
-    html!
-    {
+    html! {
         <div class={"carousel-indicator"}>
             { for (0..image_count).map(|i| {
                 if i == current_index {

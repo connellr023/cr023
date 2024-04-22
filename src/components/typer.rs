@@ -24,8 +24,7 @@ pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperPro
     let len: usize = word.len();
     let len_clone: usize = word.len();
 
-    use_effect_with_deps(move |_|
-    {
+    use_effect_with_deps(move |_| {
         if *end_clone >= len_clone && reset_clone {
             end_clone.set(start_index);
         }
@@ -35,12 +34,9 @@ pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperPro
 
     let end_clone = end.clone();
 
-    use_effect_with_deps(move |_|
-    {
-        if *end_clone < len
-        {
-            let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move ||
-            {
+    use_effect_with_deps(move |_| {
+        if *end_clone < len {
+            let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
                 end_clone.set(
                     *end_clone +
                         if word_ref.chars().nth(*end_clone).unwrap() == ' '

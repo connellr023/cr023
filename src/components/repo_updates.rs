@@ -32,17 +32,12 @@ pub fn repo_updates() -> Html
     let commit = use_state(|| None as Option<CommitResponse>);
     let commit_clone = commit.clone();
 
-    use_effect(||
-    {
-        if !(*commit).is_some()
-        {
-            wasm_bindgen_futures::spawn_local(async move
-            {                
-                match Request::get(&API_ENDPOINT).send().await
-                {
+    use_effect(|| {
+        if !(*commit).is_some() {
+            wasm_bindgen_futures::spawn_local(async move {                
+                match Request::get(&API_ENDPOINT).send().await {
                     Ok(response) => {
-                        match response.json().await
-                        {
+                        match response.json().await {
                             Ok(fetched_commit) => {
                                 commit.set(fetched_commit);
                             },
@@ -61,8 +56,7 @@ pub fn repo_updates() -> Html
         || {}
     });
 
-    html!
-    {
+    html! {
         <div class={"repo-updates-wrapper mono"}>
             <span class={"dev-credit"}>{"Connell Reffo 2024"}</span>
             <a class={"repo-license"} target={"_blank"} href={"https://opensource.org/license/mit"}>{"MIT"}</a>
@@ -74,11 +68,9 @@ pub fn repo_updates() -> Html
 
 fn render_repo_commit(commit: &Option<CommitResponse>) -> Html
 {
-    match commit
-    {
+    match commit {
         Some(commit) => {
-            html!
-            {
+            html! {
                 <>
                     <span class={"date"}>{format!("Updated On {}", commit.commit.committer.date)}</span>
                     <a class={"last-commit"} target={"_blank"} href={format!("{}", commit.html_url)}>{format!("{}...", &commit.html_url[58..65])}</a>

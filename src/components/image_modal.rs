@@ -14,17 +14,14 @@ pub struct ImageModalProps
 #[function_component(ImageModal)]
 pub fn image_modal(ImageModalProps { current_image, update_current_image }: &ImageModalProps) -> Html
 {
-    match current_image
-    {
+    match current_image {
         Some(current_image) => {
             let update_current_image_clone = update_current_image.clone();
-            let hide = Callback::from(move |_|
-            {
+            let hide = Callback::from(move |_| {
                 update_current_image_clone.emit(None);
             });
 
-            html!
-            {
+            html! {
                 <div class={"img-modal-wrapper"} onclick={hide}>
                     <div class={"img-title mono"}>{(*current_image).0}</div>
                     <img alt={(*current_image).0} src={(*current_image).1} />

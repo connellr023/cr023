@@ -12,14 +12,12 @@ pub fn string_set(StringSetProps { values }: &StringSetProps) -> Html
     let length: usize = values.len();
     let mut arr_counter: usize = 0;
 
-    html!
-    {
+    html! {
         <div class={"value"}>
             <span class={"bracket-token left"}>{"{"}</span>
             { for values.iter().map(|string| {
                 arr_counter += 1;
-                html!
-                {
+                html! {
                     <>
                         <span class="str-token">{r#"""#}{*string}{r#"""#}</span>
                         { if arr_counter < length { html! { <span class="comma-token">{","}</span> } } else { html! {} } }

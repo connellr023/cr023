@@ -12,8 +12,7 @@ pub struct SnippetProps
 #[function_component(Snippet)]
 pub fn snippet(SnippetProps { object, property, values }: &SnippetProps) -> Html
 {
-    html!
-    {
+    html! {
         <div class={"snippet-wrapper mono"}>
             <div class={"property"}>{*object}<span>{"->"}</span>{*property}</div>
             <StringSet values={values.clone()} />

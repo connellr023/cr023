@@ -1,4 +1,4 @@
-// Portfolio website
+// Portfolio Website
 // Author: Connell Reffo
 // Developed: 2024
 #![crate_name = "cr023"]
@@ -34,8 +34,7 @@ fn app() -> Html
     let in_view_clone = in_view.clone();
 
     // Use effect for handling scroll effect event
-    use_effect(move ||
-    {
+    use_effect(move || {
         let window_clone: Window = window.clone();
         let element: Element = window
             .document()
@@ -43,8 +42,7 @@ fn app() -> Html
             .get_element_by_id("name-section-wrapper")
             .unwrap();
 
-        let on_scroll_callback: Closure<dyn FnMut()> = Closure::wrap(Box::new(move ||
-        {
+        let on_scroll_callback: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
             let window_scroll_y: f64 = window_clone.scroll_y().unwrap();
             let element_scroll_height: f64 = element.scroll_height().into();
 
@@ -63,13 +61,11 @@ fn app() -> Html
     });
 
     // Callback for updating the current image to be displayed by the image modal
-    let set_image_callback = Callback::from(move |image_src: Option<AltSrcTuple>|
-    {
+    let set_image_callback = Callback::from(move |image_src: Option<AltSrcTuple>| {
         current_image_clone.set(image_src);
     });
 
-    html!
-    {
+    html! {
         <main id={"app-wrapper"} class={format!("flex-wrapper {}", if *in_view { "in-view" } else { "" })}>
             <GithubImageButton />
             <ScrollPrompt />

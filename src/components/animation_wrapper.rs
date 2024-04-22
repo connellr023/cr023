@@ -14,8 +14,7 @@ pub struct AnimationWrapperProps
 #[function_component(AnimationWrapper)]
 pub fn animation_wrapper(AnimationWrapperProps { children, hidden, reset, id, class, animation_class }: &AnimationWrapperProps) -> Html
 {
-    html!
-    {
+    html! {
         <div
             id={*id}
             hidden={if let Some(hidden) = hidden { *hidden } else { false }}

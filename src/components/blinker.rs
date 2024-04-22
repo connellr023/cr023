@@ -17,10 +17,8 @@ pub fn blinker(BlinkerProps { class, symbol, interval }: &BlinkerProps) -> Html
     let visible_clone = visible.clone();
     let interval_clone: u32 = interval.clone();
 
-    use_effect_with_deps(move |_|
-    {
-        let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move ||
-        {
+    use_effect_with_deps(move |_| {
+        let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
             visible_clone.set(!(*visible_clone));
         }));
 

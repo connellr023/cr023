@@ -14,8 +14,7 @@ pub struct NameSectionProps
 #[function_component(NameSection)]
 pub fn name_section(NameSectionProps { name, reset }: &NameSectionProps) -> Html
 {
-    html!
-    {
+    html! {
         <div id="name-section-wrapper">
             <div class={"title mono"}>
                 <span class={"prefix"}>{"~$"}</span>
