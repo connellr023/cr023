@@ -82,8 +82,8 @@ fn app() -> Html {
                     <Snippet object={"cr023"} property={"languages"} values={vec!["Java", "PHP", "typescript", "Rust", "C/C++"]} />
                     <Snippet object={"cr023"} property={"frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
                     <Snippet object={"cr023"} property={"databases"} values={vec!["MySQL", "PostgreSQL", "RedisKV", "MongoDB"]} />
-                    <Snippet object={"cr023"} property={"testing"} values={vec!["Jest", "Vitest", "PHPUnit", "JUnit"]} />
-                    <Snippet object={"cr023"} property={"tools"} values={vec!["git", "Docker"]} />
+                    <Snippet object={"cr023"} property={"testing"} values={vec!["Jest", "Vitest", "PHPUnit", "JUnit", "cargo test"]} />
+                    <Snippet object={"cr023"} property={"tools"} values={vec!["git", "Docker", "Adobe Suite"]} />
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </AnimationWrapper>
                 <h3 id={"education-section"} class={"section"}><Typer reset={!(*in_view)} word={"Education"} interval={105} start_index={1} /></h3>
@@ -107,6 +107,16 @@ fn app() -> Html {
                         repo_url={"https://github.com/connellr023/Chatter"}
                         site_url={"https://chatter-lqqb.onrender.com"}
                         description={"Chatter is a web app centered around a global chat system. It features isolated chat rooms that users can connect to without requiring an account. Currently, all chat rooms are global, however there is infrastructure in place within the server the API to allow for private chat rooms in the future."}
+                        update_current_image={set_image_callback.clone()}
+                    />
+                    <ProjectEntry
+                        name={"tensort"}
+                        version={"v1.0.0"}
+                        images={vec![("Tensort Example Images", "assets/tensort/1.png"), ("Tensort Usage", "assets/tensort/2.png"), ("Tensort Image Recognition", "assets/tensort/3.png"), ("Tensort Example Output 2", "assets/tensort/4.png")]}
+                        tech_stack={vec!["Rust", "PyTorch", "Docker"]}
+                        repo_url={"https://github.com/connellr023/tensort"}
+                        site_url={"https://github.com/connellr023/tensort"}
+                        description={"A CLI tool that utilizes a ResNet convolutional neural network to recognize content in images and sort them into classes."}
                         update_current_image={set_image_callback.clone()}
                     />
                     <ProjectEntry
