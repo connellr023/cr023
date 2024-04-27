@@ -10,8 +10,7 @@ pub struct SnippetProps
 }
 
 #[function_component(Snippet)]
-pub fn snippet(SnippetProps { object, property, values }: &SnippetProps) -> Html
-{
+pub fn snippet(SnippetProps { object, property, values }: &SnippetProps) -> Html {
     html! {
         <div class={"snippet-wrapper mono"}>
             <div class={"property"}>{*object}<span>{"->"}</span>{*property}</div>

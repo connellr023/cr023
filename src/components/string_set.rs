@@ -1,14 +1,12 @@
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
-pub struct StringSetProps
-{
+pub struct StringSetProps {
     pub values: Vec<&'static str>
 }
 
 #[function_component(StringSet)]
-pub fn string_set(StringSetProps { values }: &StringSetProps) -> Html
-{
+pub fn string_set(StringSetProps { values }: &StringSetProps) -> Html {
     let length: usize = values.len();
     let mut arr_counter: usize = 0;
 

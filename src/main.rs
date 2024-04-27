@@ -23,8 +23,7 @@ use crate::components::{
 };
 
 #[function_component(App)]
-fn app() -> Html
-{
+fn app() -> Html {
     let window: Window = window().unwrap();
 
     let current_image = use_state(|| None as Option<AltSrcTuple>);
@@ -84,20 +83,21 @@ fn app() -> Html
                     <Snippet object={"cr023"} property={"frameworks"} values={vec!["React.js", "Next.js", "Vue.js", "Yew.rs", "express.js"]} />
                     <Snippet object={"cr023"} property={"databases"} values={vec!["MySQL", "PostgreSQL", "RedisKV", "MongoDB"]} />
                     <Snippet object={"cr023"} property={"testing"} values={vec!["Jest", "Vitest", "PHPUnit", "JUnit"]} />
-                    <Snippet object={"cr023"} property={"tools"} values={vec!["git"]} />
+                    <Snippet object={"cr023"} property={"tools"} values={vec!["git", "Docker"]} />
                     <Snippet object={"cr023"} property={"location"} values={vec!["Calgary, AB"]} />
                 </AnimationWrapper>
                 <h3 id={"education-section"} class={"section"}><Typer reset={!(*in_view)} word={"Education"} interval={105} start_index={1} /></h3>
-                <div style={"margin-bottom: 175px"} class={"abstract side-border"}>{"While a lot of my current skills are self taught, I am currently a student at the University of Calgary where I have gained valuable experience working with others and made important connections."}</div>
+                <div style={"margin-bottom: 175px"} class={"abstract side-border"}>{"While a lot of my current skills are self taught, I am currently a Computer Science student at the University of Calgary where I have gained valuable experience working with others and made important connections."}</div>
                 <h3 id={"main-projects-section"} class={"section"}><Typer reset={!(*in_view)} word={"Main Projects"} interval={80} start_index={1} /></h3>
                 <div class={"abstract side-border"}>{"It is worth noting that the projects below are a select few of very many. A lot of my skills are built off of unfinished as well as private work done for school which were excellent but I do not believe belong on this portfolio."}</div>
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"cr023"}
-                        version={"U1"}
+                        version={"v2"}
                         tech_stack={vec!["Yew.rs", "Rust", "WebAssembly"]}
                         description={"The website you are currently on! A portfolio to showcase my work. This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the Yew framework which is very similar to React for creating front end web services."}
                         repo_url={"https://github.com/connellr023/cr023"}
+                        site_url={"https://connellr023.github.io/cr023/"}
                     />
                     <ProjectEntry
                         name={"Chatter"}
@@ -144,7 +144,6 @@ fn app() -> Html
     }
 }
 
-fn main()
-{
+fn main() {
     yew::start_app::<App>();
 }

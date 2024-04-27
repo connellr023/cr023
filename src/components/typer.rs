@@ -3,8 +3,7 @@ use wasm_bindgen::prelude::Closure;
 use crate::bindings::set_timeout;
 
 #[derive(Properties, PartialEq)]
-pub struct TyperProps
-{
+pub struct TyperProps {
     pub class: Option<&'static str>,
     pub word: &'static str,
     pub interval: u32,
@@ -13,8 +12,7 @@ pub struct TyperProps
 }
 
 #[function_component(Typer)]
-pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperProps) -> Html
-{
+pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperProps) -> Html {
     let start_index: usize = if let Some(start_index) = start_index { *start_index } else { 0usize };
     let end = use_state(|| start_index);
     let end_clone = end.clone();
