@@ -3,16 +3,14 @@ use wasm_bindgen::prelude::Closure;
 use crate::bindings::set_timeout;
 
 #[derive(Properties, PartialEq)]
-pub struct BlinkerProps
-{
+pub struct BlinkerProps {
     pub class: Option<&'static str>,
     pub symbol: &'static str,
     pub interval: u32
 }
 
 #[function_component(Blinker)]
-pub fn blinker(BlinkerProps { class, symbol, interval }: &BlinkerProps) -> Html
-{
+pub fn blinker(BlinkerProps { class, symbol, interval }: &BlinkerProps) -> Html {
     let visible = use_state(|| true);
     let visible_clone = visible.clone();
     let interval_clone: u32 = interval.clone();

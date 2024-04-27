@@ -1,8 +1,7 @@
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
-pub struct AnimationWrapperProps
-{
+pub struct AnimationWrapperProps {
     pub children: Children,
     pub reset: bool,
     pub hidden: Option<bool>,
@@ -12,8 +11,7 @@ pub struct AnimationWrapperProps
 }
 
 #[function_component(AnimationWrapper)]
-pub fn animation_wrapper(AnimationWrapperProps { children, hidden, reset, id, class, animation_class }: &AnimationWrapperProps) -> Html
-{
+pub fn animation_wrapper(AnimationWrapperProps { children, hidden, reset, id, class, animation_class }: &AnimationWrapperProps) -> Html {
     html! {
         <div
             id={*id}

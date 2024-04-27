@@ -5,15 +5,13 @@ use crate::components::{
 };
 
 #[derive(Properties, PartialEq)]
-pub struct ImageModalProps
-{
+pub struct ImageModalProps {
     pub current_image: Option<AltSrcTuple>,
     pub update_current_image: ImgClickCallback
 }
 
 #[function_component(ImageModal)]
-pub fn image_modal(ImageModalProps { current_image, update_current_image }: &ImageModalProps) -> Html
-{
+pub fn image_modal(ImageModalProps { current_image, update_current_image }: &ImageModalProps) -> Html {
     match current_image {
         Some(current_image) => {
             let update_current_image_clone = update_current_image.clone();

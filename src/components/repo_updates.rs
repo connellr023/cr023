@@ -1,34 +1,31 @@
+use regex::Regex;
 use yew::prelude::*;
 use reqwasm::http::Request;
 use serde::{Deserialize, Serialize};
 use crate::bindings::log;
 
 #[derive(Serialize, Deserialize)]
-struct Committer
-{
+struct Committer {
     pub name: String,
     pub email: String,
     pub date: String
 }
 
 #[derive(Serialize, Deserialize)]
-struct Commit
-{
+struct Commit {
     pub committer: Committer
 }
 
 #[derive(Serialize, Deserialize)]
-struct CommitResponse
-{
+struct CommitResponse {
     pub commit: Commit,
     pub html_url: String
 }
 
-const API_ENDPOINT: &str = "https://api.github.com/repos/connellr023/cr023/commits/main";
+const API_ENDPOINT: &str = "https://api.github.com/repos/connellr023/cr023/commits/prod";
 
 #[function_component(RepoUpdates)]
-pub fn repo_updates() -> Html
-{
+pub fn repo_updates() -> Html {
     let commit = use_state(|| None as Option<CommitResponse>);
     let commit_clone = commit.clone();
 
@@ -66,14 +63,19 @@ pub fn repo_updates() -> Html
     }
 }
 
-fn render_repo_commit(commit: &Option<CommitResponse>) -> Html
-{
+fn render_repo_commit(commit: &Option<CommitResponse>) -> Html {
     match commit {
         Some(commit) => {
+            let commit_id = Regex::new(r"/([a-f0-9]{40})$")
+                .unwrap()
+                .captures(&commit.html_url)
+                .and_then(|cap| { cap.get(1) })
+                .map_or("", |m| { m.as_str() });
+
             html! {
                 <>
                     <span class={"date"}>{format!("Updated On {}", commit.commit.committer.date)}</span>
-                    <a class={"last-commit"} target={"_blank"} href={format!("{}", commit.html_url)}>{format!("{}...", &commit.html_url[58..65])}</a>
+                    <a class={"last-commit"} target={"_blank"} href={format!("{}", commit.html_url)}>{format!("{}...", &commit_id[0..7])}</a>
                 </>
             }
         },

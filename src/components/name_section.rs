@@ -5,15 +5,13 @@ use crate::components::{
 };
 
 #[derive(Properties, PartialEq)]
-pub struct NameSectionProps
-{
+pub struct NameSectionProps {
     pub name: &'static str,
     pub reset: bool
 }
 
 #[function_component(NameSection)]
-pub fn name_section(NameSectionProps { name, reset }: &NameSectionProps) -> Html
-{
+pub fn name_section(NameSectionProps { name, reset }: &NameSectionProps) -> Html {
     html! {
         <div id="name-section-wrapper">
             <div class={"title mono"}>
