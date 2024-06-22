@@ -1,4 +1,4 @@
-use yew::prelude::*;
+use crate::components::prelude::*;
 use crate::components::{
     AltSrcTuple,
     ImgClickCallback
@@ -7,16 +7,19 @@ use crate::components::{
 #[derive(Properties, PartialEq)]
 pub struct ImageModalProps {
     pub current_image: Option<AltSrcTuple>,
-    pub update_current_image: ImgClickCallback
+    pub update_current_image: Rc<ImgClickCallback>
 }
 
 #[function_component(ImageModal)]
 pub fn image_modal(ImageModalProps { current_image, update_current_image }: &ImageModalProps) -> Html {
     match current_image {
         Some(current_image) => {
-            let update_current_image_clone = update_current_image.clone();
-            let hide = Callback::from(move |_| {
-                update_current_image_clone.emit(None);
+            let hide = Callback::from({
+                let update_current_image = Rc::clone(update_current_image);
+
+                move |_| {
+                    update_current_image.emit(None);
+                }
             });
 
             html! {

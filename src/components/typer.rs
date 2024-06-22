@@ -1,6 +1,5 @@
-use yew::prelude::*;
-use wasm_bindgen::prelude::Closure;
 use crate::bindings::set_timeout;
+use crate::components::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct TyperProps {
@@ -13,46 +12,51 @@ pub struct TyperProps {
 
 #[function_component(Typer)]
 pub fn typer(TyperProps { class, word, interval, reset, start_index }: &TyperProps) -> Html {
-    let start_index: usize = if let Some(start_index) = start_index { *start_index } else { 0usize };
-    let end = use_state(|| start_index);
-    let end_clone = end.clone();
-    let reset_clone: bool = reset.clone();
+    let start_index = if let Some(start_index) = start_index { *start_index } else { 0usize };
+    let end = Rc::new(use_state(|| start_index));
     let word_ref: &str = &word;
-    let interval_clone: u32 = interval.clone();
     let len: usize = word.len();
-    let len_clone: usize = word.len();
 
-    use_effect_with_deps(move |_| {
-        if *end_clone >= len_clone && reset_clone {
-            end_clone.set(start_index);
+    use_effect_with_deps({
+        let end = Rc::clone(&end);
+        let start_index = start_index.clone();
+        let reset = reset.clone();
+
+        move |_| {
+            if **end >= len && reset {
+                end.set(start_index);
+            }
+    
+            || {}
         }
-
-        || {}
     }, reset.clone());
 
-    let end_clone = end.clone();
+    use_effect_with_deps({
+        let end = Rc::clone(&end);
+        let interval = interval.clone();
 
-    use_effect_with_deps(move |_| {
-        if *end_clone < len {
-            let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
-                end_clone.set(
-                    *end_clone +
-                        if word_ref.chars().nth(*end_clone).unwrap() == ' '
-                        { 2 }
-                        else
-                        { 1 }
-                );
-            }));
-
-            set_timeout(&timeout_closure, interval_clone);
-
-            // Cleanup function if timeout is started
-            timeout_closure.forget()
+        move |_| {
+            if **end < len {
+                let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
+                    end.set(
+                        **end +
+                            if word_ref.chars().nth(**end).unwrap() == ' '
+                            { 2 }
+                            else
+                            { 1 }
+                    );
+                }));
+    
+                set_timeout(&timeout_closure, interval);
+    
+                // Cleanup function if timeout is started
+                timeout_closure.forget()
+            }
+    
+            // Cleanup function if timer is not started
+            || {}
         }
+    }, **end);
 
-        // Cleanup function if timer is not started
-        || {}
-    }, end.clone());
-
-    html! { <span id={format!("{}", *reset)} class={*class}>{&word[0..*end]}</span> }
+    html! { <span id={format!("{}", *reset)} class={*class}>{&word[0..**end]}</span> }
 }

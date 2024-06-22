@@ -1,8 +1,8 @@
-use regex::Regex;
-use yew::prelude::*;
-use reqwasm::http::Request;
-use serde::{Deserialize, Serialize};
+use crate::components::prelude::*;
 use crate::bindings::log;
+use serde::{Deserialize, Serialize};
+use regex::Regex;
+use reqwasm::http::Request;
 
 #[derive(Serialize, Deserialize)]
 struct Committer {
@@ -26,21 +26,26 @@ const API_ENDPOINT: &str = "https://api.github.com/repos/connellr023/cr023/commi
 
 #[function_component(RepoUpdates)]
 pub fn repo_updates() -> Html {
-    let commit = use_state(|| None as Option<CommitResponse>);
-    let commit_clone = commit.clone();
+    let commit = Rc::new(use_state::<Option<CommitResponse>, _>(|| None));
 
-    use_effect(|| {
-        if !(*commit).is_some() {
+    use_effect({
+        let commit = Rc::clone(&commit);
+
+        move || {
+            let cleanup = || {};
+
+            if commit.is_some() {
+                return cleanup;
+            }
+
             wasm_bindgen_futures::spawn_local(async move {                
                 match Request::get(&API_ENDPOINT).send().await {
-                    Ok(response) => {
-                        match response.json().await {
-                            Ok(fetched_commit) => {
-                                commit.set(fetched_commit);
-                            },
-                            Err(_) => {
-                                log("Failed to parse API response");
-                            }
+                    Ok(response) => match response.json().await {
+                        Ok(fetched_commit) => {
+                            commit.set(fetched_commit);
+                        },
+                        Err(_) => {
+                            log("Failed to parse API response");
                         }
                     },
                     Err(_) => {
@@ -48,9 +53,9 @@ pub fn repo_updates() -> Html {
                     }
                 }
             });
+    
+            cleanup
         }
-
-        || {}
     });
 
     html! {
@@ -58,7 +63,7 @@ pub fn repo_updates() -> Html {
             <span class={"dev-credit"}>{"Connell Reffo 2024"}</span>
             <a class={"repo-license"} target={"_blank"} href={"https://opensource.org/license/mit"}>{"MIT"}</a>
             <span class={"dash"}>{"::"}</span>
-            {render_repo_commit(&commit_clone)}
+            {render_repo_commit(&commit)}
         </div>
     }
 }
