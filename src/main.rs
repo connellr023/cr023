@@ -91,16 +91,38 @@ fn app() -> Html {
                 <div class={"projects-wrapper"}>
                     <ProjectEntry
                         name={"cr023"}
-                        version={"v2"}
+                        version={"v3"}
                         tech_stack={&["Yew.rs", "Rust", "WebAssembly"] as &'static [&'static str]}
                         description={"The website you are currently on! A portfolio to showcase my work. This project specifically is different as I used it as an introduction to the Rust programming language with its web assembly compilation feature. This was created utilizing the Yew framework which is very similar to React for creating front end web services."}
                         repo_url={"https://github.com/connellr023/cr023"}
                         site_url={"https://connellr023.github.io/cr023/"}
                     />
                     <ProjectEntry
+                        name={"Oncology Quest"}
+                        version={"v1.0.0"}
+                        tech_stack={&["Rust", "Actix Web", "SQLx", "PostgreSQL", "Vue.js", "typescript", "Docker", "AWS"] as &'static [&'static str]}
+                        images={&[
+                            ("Oncology Quest Home Page Screen", "assets/oncology_quest/1.png"),
+                            ("Oncology Quest Rotation Select Screen", "assets/oncology_quest/2.png"),
+                            ("Oncology Quest Task Editor Screen", "assets/oncology_quest/3.png"),
+                            ("Oncology Quest Task View Screen", "assets/oncology_quest/4.png"),
+                            ("Oncology Quest Search Users Screen", "assets/oncology_quest/5.png"),
+                            ("Oncology Quest View Progress Screen", "assets/oncology_quest/6.png")
+                        ] as &'static [AltSrcTuple]}
+                        repo_url={"https://github.com/connellr023/oncology-quest"}
+                        site_url={"https://www.oncologyquest.net/"}
+                        description={"Oncology Quest is a web app solution to the problem of tracking and managing tasks for Medical Oncology trainees. It features a task editor, task viewer, and user search functionality for admins. The app is designed to be user-friendly for both regular users and admins, with a clean and intuitive dark themed interface."}
+                        update_current_image={Rc::clone(&set_image_callback)}
+                    />
+                    <ProjectEntry
                         name={"Chatter"}
                         version={"v1.0.3"}
-                        images={&[("Chatter Home Page Screen", "assets/chatter/1.png"), ("Chatter Empty Chat Screen", "assets/chatter/2.png"), ("Chatter Chat Screen", "assets/chatter/3.png"), ("Chatter Error Screen", "assets/chatter/4.png")] as &'static [AltSrcTuple]}
+                        images={&[
+                            ("Chatter Home Page Screen", "assets/chatter/1.png"),
+                            ("Chatter Empty Chat Screen", "assets/chatter/2.png"),
+                            ("Chatter Chat Screen", "assets/chatter/3.png"),
+                            ("Chatter Error Screen", "assets/chatter/4.png")
+                        ] as &'static [AltSrcTuple]}
                         tech_stack={&["Vue.js", "socket.io", "express.js", "Jest", "Vitest", "typescript"] as &'static [&'static str]}
                         repo_url={"https://github.com/connellr023/Chatter"}
                         site_url={"https://chatter-lqqb.onrender.com"}
