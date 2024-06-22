@@ -1,4 +1,4 @@
-use yew::prelude::*;
+use crate::components::prelude::*;
 use crate::components::{
     string_set::StringSet,
     animation_wrapper::AnimationWrapper,
@@ -11,11 +11,11 @@ pub struct ProjectEntryProps {
     pub name: &'static str,
     pub description: &'static str,
     pub version: &'static str,
-    pub tech_stack: Vec<&'static str>,
-    pub images: Option<Vec<AltSrcTuple>>,
+    pub tech_stack: &'static [&'static str],
+    pub images: Option<&'static [AltSrcTuple]>,
     pub repo_url: Option<&'static str>,
     pub site_url: Option<&'static str>,
-    pub update_current_image: Option<ImgClickCallback>
+    pub update_current_image: Option<Rc<ImgClickCallback>>
 }
 
 #[function_component(ProjectEntry)]
@@ -30,11 +30,14 @@ pub fn project_entry(ProjectEntryProps {
     update_current_image 
 }: &ProjectEntryProps) -> Html
 {
-    let hidden = use_state(|| true);
+    let hidden = Rc::new(use_state(|| true));
 
-    let hidden_clone = hidden.clone();
-    let toggle_hidden_content = Callback::from(move |_| {
-        hidden_clone.set(!(*hidden_clone));
+    let toggle_hidden_content = Callback::from({
+        let hidden = Rc::clone(&hidden);
+
+        move |_| {
+            hidden.set(!(**hidden));
+        }
     });
 
     html! {
@@ -43,8 +46,8 @@ pub fn project_entry(ProjectEntryProps {
                 <span class={"project-name mono"}>{name}</span>
                 <span class={"project-version"}>{version}</span>
             </div>
-            <AnimationWrapper reset={!(*hidden)} hidden={*hidden} class={"project-content"} animation_class={"fade-in-children"}>
-                <StringSet values={tech_stack.clone()} />
+            <AnimationWrapper reset={!(**hidden)} hidden={**hidden} class={"project-content"} animation_class={"fade-in-children"}>
+                <StringSet values={*tech_stack} />
                 <p class={"project-desc mono side-border"}>{description}</p>
                 {render_image_content(images, update_current_image)}
                 <div class={"project-links mono"}>
@@ -62,30 +65,39 @@ pub fn project_entry(ProjectEntryProps {
     }
 }
 
-fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<ImgClickCallback>) -> Html {
+fn render_image_content(images: &Option<&'static [AltSrcTuple]>, callback: &Option<Rc<ImgClickCallback>>) -> Html {
     match images {
         Some(images) => {
-            let current_index = use_state(|| 0);
-            let images_len = images.len().clone();
+            let current_index = Rc::new(use_state(|| 0));
 
-            let current_index_clone = current_index.clone();
-            let next_image = Callback::from(move |_| {
-                current_index_clone.set((*current_index_clone + 1) % images_len);
-            });
+            let next_image = Callback::from({
+                let current_index = Rc::clone(&current_index);
+                let images_len = images.len();
 
-            let current_index_clone = current_index.clone();
-            let prev_image = Callback::from(move |_| {
-                if *current_index_clone == 0 {
-                    current_index_clone.set(images_len - 1);
-                }
-                else {
-                    current_index_clone.set(*current_index_clone - 1)
+                move |_| {
+                    current_index.set((**current_index + 1) % images_len);
                 }
             });
 
-            let current_image = images[*current_index].clone();
-            let handle_img_click = match callback.clone() {
+            let prev_image = Callback::from({
+                let current_index = Rc::clone(&current_index);
+                let images_len = images.len();
+
+                move |_| {
+                    if **current_index == 0 {
+                        current_index.set(images_len - 1);
+                    }
+                    else {
+                        current_index.set(**current_index - 1)
+                    }
+                }
+            });
+
+            let current_image = images[**current_index];
+            let handle_img_click = match callback {
                 Some(callback) => {
+                    let callback = Rc::clone(callback);
+
                     Callback::once(move |_|
                     {
                         callback.emit(Some(current_image));
@@ -100,10 +112,10 @@ fn render_image_content(images: &Option<Vec<AltSrcTuple>>, callback: &Option<Img
                 <div class={"image-wrapper"}>
                     <div class={"image-content"}>
                         <button class={"image-switch-button left"} onclick={prev_image}>{"<"}</button>
-                        <img onclick={handle_img_click} class={"current-image"} alt={images[*current_index].0} src={images[*current_index].1} />
+                        <img onclick={handle_img_click} class={"current-image"} alt={images[**current_index].0} src={images[**current_index].1} />
                         <button class={"image-switch-button right"} onclick={next_image}>{">"}</button>
                     </div>
-                    {render_carousel_index_indicator(*current_index, images_len)}
+                    {render_carousel_index_indicator(**current_index, images.len())}
                 </div>
             }
         },

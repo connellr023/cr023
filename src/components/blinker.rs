@@ -1,5 +1,4 @@
-use yew::prelude::*;
-use wasm_bindgen::prelude::Closure;
+use crate::components::prelude::*;
 use crate::bindings::set_timeout;
 
 #[derive(Properties, PartialEq)]
@@ -11,20 +10,23 @@ pub struct BlinkerProps {
 
 #[function_component(Blinker)]
 pub fn blinker(BlinkerProps { class, symbol, interval }: &BlinkerProps) -> Html {
-    let visible = use_state(|| true);
-    let visible_clone = visible.clone();
-    let interval_clone: u32 = interval.clone();
+    let visible = Rc::new(use_state(|| true));
+    
+    use_effect_with_deps({
+        let visible = Rc::clone(&visible);
+        let interval = interval.clone();
 
-    use_effect_with_deps(move |_| {
-        let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
-            visible_clone.set(!(*visible_clone));
-        }));
-
-        set_timeout(&timeout_closure, interval_clone);
-
-        // Timeout cleanup function
-        || { timeout_closure.forget() }
+        move |_| {
+            let timeout_closure: Closure<dyn FnMut()> = Closure::wrap(Box::new(move || {
+                visible.set(!(**visible));
+            }));
+    
+            set_timeout(&timeout_closure, interval);
+    
+            // Timeout cleanup function
+            || { timeout_closure.forget() }
+        }
     }, visible.clone());
 
-    html! { <span class={*class}>{if *visible { &symbol } else { "" }}</span> }
+    html! { <span class={*class}>{if **visible { &symbol } else { "" }}</span> }
 }

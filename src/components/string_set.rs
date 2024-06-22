@@ -2,7 +2,7 @@ use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct StringSetProps {
-    pub values: Vec<&'static str>
+    pub values: &'static [&'static str]
 }
 
 #[function_component(StringSet)]

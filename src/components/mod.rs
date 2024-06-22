@@ -12,3 +12,5 @@ pub mod string_set;
 pub mod animation_wrapper;
 pub mod repo_updates;
 pub mod image_modal;
+
+mod prelude;
