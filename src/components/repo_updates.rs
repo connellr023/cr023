@@ -22,7 +22,7 @@ struct CommitResponse {
     pub html_url: String
 }
 
-const API_ENDPOINT: &str = "https://api.github.com/repos/connellr023/cr023/commits/prod";
+const API_ENDPOINT: &str = "https://api.github.com/repos/connellr023/cr023/commits/main";
 
 #[function_component(RepoUpdates)]
 pub fn repo_updates() -> Html {
